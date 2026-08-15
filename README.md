@@ -33,9 +33,7 @@ RoboChemGym contains three connected modules:
 |---|---|
 | Protocol-driven trajectory generation | Released |
 | Randomized data collection | Released |
-| Policy training | **Coming soon** |
 | Policy deployment and evaluation | Released |
-| Level 1-3 benchmark manifests (20 Protocols) | **Coming soon** |
 
 ## Installation
 
