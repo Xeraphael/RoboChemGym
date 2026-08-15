@@ -161,6 +161,7 @@ pipeline/                 采集、训练和评测编排
 policy/                   ACT 模型、数据集、运行器和工作空间
 tasks/                    Isaac 任务定义
 protocols/                可复现 Protocol bundle
+assets/                   实验室仪器与设备（Git LFS）
 config/                   采集、训练和评测配置
 scripts/                  可复现启动命令
 tests/                    功能测试
@@ -169,12 +170,11 @@ docs/                     项目图片和第三方声明
 
 ## 资产
 
-当前公开源码只包含内置 `example_protocol` 示例场景中嵌入的资产：两个锥形瓶
-变体、加热板和目标平台。Capability registry 中的其他条目仅用于兼容；在
-提供可再分发资产并更新路径之前，Validator 会阻止使用这些资产。
+完整实验室资产库位于 `assets/`，并通过 Git LFS 管理，其中包含 capability
+registry 使用的可交互玻璃仪器和摆放设备。克隆仓库后执行 `git lfs pull`，
+即可下载实际的 USD、MDL、纹理和缩略图文件。
 
-旧的专有实验室场景和私有仪器资产库不属于本次发布。Isaac Sim 及其运行时
-资产需要单独安装。
+Isaac Sim 及其运行时资产仍需单独安装。
 
 ## 引用
 

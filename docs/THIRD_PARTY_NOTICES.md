@@ -16,6 +16,4 @@ with NVIDIA's applicable license terms. The project Franka wrapper imports the
 robot implementation from the installed Isaac Sim runtime rather than
 redistributing NVIDIA's implementation.
 
-Legacy lab scenes and instrument packages containing non-redistributable NVIDIA
-MDL sources are intentionally excluded. The public capability registry therefore
-supports only assets embedded in the bundled `example_protocol` scene.
+The laboratory asset library is tracked through Git LFS under `assets/`.

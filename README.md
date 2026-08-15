@@ -171,6 +171,7 @@ pipeline/                 Collection, training, and evaluation orchestration
 policy/                   ACT model, datasets, runners, and workspaces
 tasks/                    Isaac task definitions
 protocols/                Reproducible Protocol bundles
+assets/                   Laboratory instruments and devices (Git LFS)
 config/                   Collection, training, and evaluation configurations
 scripts/                  Reproducible launch commands
 tests/                    Focused code-level validation
@@ -179,14 +180,12 @@ docs/                     Project images and third-party notices
 
 ## Assets
 
-The public source snapshot intentionally contains only the assets embedded in
-the bundled `example_protocol` scene: two Erlenmeyer flask variants, a heating
-plate, and a target platform. Other capability-registry entries are retained for
-compatibility but fail validation until redistributable assets are supplied and
-their paths are updated.
+The laboratory asset library is included under `assets/` and managed with Git
+LFS. It contains interactive glassware and placement devices used by the
+capability registry. Run `git lfs pull` after cloning to download the actual USD,
+MDL, texture, and thumbnail files.
 
-Legacy proprietary lab scenes and the private instrument library are not part of
-this release. Isaac Sim and its runtime assets must be installed separately.
+Isaac Sim and its runtime assets must still be installed separately.
 
 ## Citation
 

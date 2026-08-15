@@ -224,12 +224,6 @@ agent/logs/
 # LabUtopia dataset - 不包含在仓库中
 LabUtopia-dataset/
 
-# Instruments folder - 不包含在仓库中
-Instruments/
-
-# Assets folder - 不包含在仓库中
-assets/
-
 # Reachable folder - 不包含在仓库中
 reachable/
 
