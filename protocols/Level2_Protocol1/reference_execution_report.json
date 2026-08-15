@@ -1,0 +1,171 @@
+{
+  "execution_success": true,
+  "failed_step": null,
+  "steps": [
+    {
+      "step_id": "step_001",
+      "action": "pick",
+      "object_id": "solid_flask",
+      "target_id": null,
+      "coverage_level": "supported",
+      "adapter": "PickActionAdapter",
+      "verifier": "PickVerifier",
+      "attempt_count": 1,
+      "success": true,
+      "start_frame": 1,
+      "end_frame": 1238,
+      "controller_completed": true,
+      "semantic_requirements": [],
+      "verification": {
+        "success": true,
+        "code": "OK",
+        "message": "",
+        "measurements": {
+          "lift": 0.15411343809365108,
+          "stable_object_gripper_distance": 0.049406781258588446,
+          "stable_frames": 5
+        },
+        "verification_level": "state_observed"
+      }
+    },
+    {
+      "step_id": "step_002",
+      "action": "place",
+      "object_id": "solid_flask",
+      "target_id": "heating_plate",
+      "coverage_level": "supported",
+      "adapter": "PlaceActionAdapter",
+      "verifier": "PlaceVerifier",
+      "attempt_count": 1,
+      "success": true,
+      "start_frame": 1239,
+      "end_frame": 1376,
+      "controller_completed": true,
+      "semantic_requirements": [],
+      "verification": {
+        "success": true,
+        "code": "OK",
+        "message": "",
+        "measurements": {
+          "object_target_distance": 0.0727618369797285,
+          "horizontal_object_target_distance": 0.019447420999046183,
+          "vertical_object_target_distance": 0.07011478258648773,
+          "gripper_opening": 0.03999987803399563
+        },
+        "verification_level": "state_observed"
+      }
+    },
+    {
+      "step_id": "step_003",
+      "action": "press",
+      "object_id": null,
+      "target_id": "heating_plate",
+      "coverage_level": "degraded",
+      "adapter": "PressActionAdapter",
+      "verifier": "PressVerifier",
+      "attempt_count": 1,
+      "success": true,
+      "start_frame": 1377,
+      "end_frame": 1529,
+      "controller_completed": true,
+      "semantic_requirements": [
+        "搅拌至苯甲酸部分溶解",
+        "边倾倒边搅拌",
+        "避免局部过热"
+      ],
+      "verification": {
+        "success": true,
+        "code": "OK",
+        "message": "",
+        "measurements": {
+          "minimum_gripper_button_distance": 0.05357452725410111,
+          "minimum_gripper_target_pose_distance": 0.008948690974499228,
+          "button_displacement": 0.0
+        },
+        "verification_level": "motion_only"
+      }
+    },
+    {
+      "step_id": "step_004",
+      "action": "pick",
+      "object_id": "liquid_flask",
+      "target_id": null,
+      "coverage_level": "supported",
+      "adapter": "PickActionAdapter",
+      "verifier": "PickVerifier",
+      "attempt_count": 1,
+      "success": true,
+      "start_frame": 1530,
+      "end_frame": 2846,
+      "controller_completed": true,
+      "semantic_requirements": [],
+      "verification": {
+        "success": true,
+        "code": "OK",
+        "message": "",
+        "measurements": {
+          "lift": 0.15358586618378478,
+          "stable_object_gripper_distance": 0.04066983327505184,
+          "stable_frames": 5
+        },
+        "verification_level": "state_observed"
+      }
+    },
+    {
+      "step_id": "step_005",
+      "action": "pour",
+      "object_id": "liquid_flask",
+      "target_id": "solid_flask",
+      "coverage_level": "degraded",
+      "adapter": "PourActionAdapter",
+      "verifier": "PourVerifier",
+      "attempt_count": 1,
+      "success": true,
+      "start_frame": 2847,
+      "end_frame": 3340,
+      "controller_completed": true,
+      "semantic_requirements": [
+        "边倾倒边搅拌"
+      ],
+      "verification": {
+        "success": true,
+        "code": "OK",
+        "message": "",
+        "measurements": {
+          "max_source_gripper_distance": 0.0444169291388051,
+          "minimum_gripper_target_distance": 0.1684696325197676,
+          "maximum_wrist_delta": 1.7243052124977112,
+          "rotated_hold_frames": 307
+        },
+        "verification_level": "motion_only"
+      }
+    },
+    {
+      "step_id": "step_006",
+      "action": "place",
+      "object_id": "liquid_flask",
+      "target_id": "return_platform",
+      "coverage_level": "supported",
+      "adapter": "PlaceActionAdapter",
+      "verifier": "PlaceVerifier",
+      "attempt_count": 1,
+      "success": true,
+      "start_frame": 3341,
+      "end_frame": 3595,
+      "controller_completed": true,
+      "semantic_requirements": [],
+      "verification": {
+        "success": true,
+        "code": "OK",
+        "message": "",
+        "measurements": {
+          "object_target_distance": 0.08682862363351171,
+          "horizontal_object_target_distance": 0.05547890737594998,
+          "vertical_object_target_distance": 0.06679296907954302,
+          "gripper_opening": 0.03999999910593033
+        },
+        "verification_level": "state_observed"
+      }
+    }
+  ]
+}

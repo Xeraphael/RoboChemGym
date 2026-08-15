@@ -1,0 +1,75 @@
+# 【需修改】任务名称 - 用于标识任务
+name: Protocol5
+
+# 【需修改】任务类型 在factory/controller_factory中寻找对应值
+task_type: "protocol5"
+
+# 【需修改】控制器类型 - 在factory/task_factory中寻找对应值
+controller_type: "protocol5_experiment"
+
+mode: "collect"
+
+# 【需修改】USD场景文件路径
+usd_path: "assets/chemistry_lab/lab_for_protocol4/lab_001.usd"
+
+# 【可选修改】最大回合数 长动作序列可增加到1000左右
+max_episodes: 1000
+
+task:
+# 【需修改】场景中资产路径
+  obj_paths:
+    # 将场景中的物体在下方进行注册 路径为“/World/物体名称“ 需要与usd文件对应
+    - path: "/World/table"
+    - path: "/World/GroundPlane"
+    - path: "/World/beaker1"
+    - path: "/World/beaker2"
+    - path: "/World/TubeRack"
+    - path: "/World/glass_rod"
+    - path: "/World/FumeHood"
+    - path: "/World/target_plat"
+    - path: "/World/target_plat2"
+    - path: "/World/target_plat1"
+    - path: "/World/HeatingPlate"
+    - path: "/World/DryingBox"
+    - path: "/World/DryingBox/handle"
+    - path: "/World/DryingBox/RevoluteJoint"
+
+# 【可选修改】相机的位置
+cameras:
+  # 相机1 - 侧视角
+  - prim_path: "/World/Camera1" 
+    name: "camera_1"  
+    translation: [-3.20212, 1.87906, 2.47941] 
+    resolution: [1280, 720]  
+    focal_length: 6  
+    orientation: [-0.42694, -0.30008, 0.49052, 0.6979]  
+    image_type: "rgb"  
+
+  # 相机2 - 顶视角
+  - prim_path: "/World/Camera2"
+    name: "camera_2"
+    translation: [0.77641, -0.24626, 2.11587] 
+    resolution: [1280, 720] 
+    focal_length: 1.5  
+    orientation: [0.67568, 0.19828, 0.19992, 0.6813]  
+    image_type: "rgb"
+
+  # 相机3 - 机械臂手部相机 (固定在机械臂上)
+  - prim_path: "/World/Franka/panda_hand/arm_camera"  
+    name: "camera_3" 
+    resolution: [1280, 720] 
+    image_type: "rgb"  
+robot:
+  type: "franka" 
+  position: [-0.4, 0, 0.71]  # 【可选修改】机器人基座位置 [X, Y, Z] (米)
+
+collector:
+  type: "default" 
+  compression: gzip  
+
+hydra:
+  run:
+    dir: outputs/${mode}/${now:%Y.%m.%d}/${now:%H.%M.%S}_${name}  
+
+multi_run:
+  run_dir: outputs/${mode}/${now:%Y.%m.%d}/${now:%H.%M.%S}_${name}  

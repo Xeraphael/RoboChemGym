@@ -1,0 +1,7 @@
+profiles:
+  default: [0, 90, 30]
+  pick_solid: [0, 90, 20]
+  pour_default: [0, 90, 10]
+  press_z_default: [0, 80, 0]
+  open_default: [0, 90, 0]
+  close_default: [0, 110, 0]

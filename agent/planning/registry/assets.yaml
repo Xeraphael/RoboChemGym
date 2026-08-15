@@ -1,0 +1,139 @@
+assets:
+  BalaoVolumetrico:
+    aliases: [balao_volumetrico, 巴朗容量瓶]
+    category: container
+    usd_path: Instruments/InteractiveAssets/BalaoVolumetrico/BalaoVolumetrico_100mL.usdc
+    supported_actions: [pick, place, pour, shake]
+  Beaker:
+    aliases: [beaker, 烧杯]
+    category: container
+    usd_path: Instruments/InteractiveAssets/Beaker/Beaker_01/Beaker_01.usd
+    supported_actions: [pick, place, pour, shake]
+  Crucible:
+    aliases: [crucible, 坩埚]
+    category: container
+    usd_path: Instruments/InteractiveAssets/Crucible/Crucible.usd
+    supported_actions: [pick, place]
+  DistillationFlask:
+    aliases: [distillation_flask, 蒸馏瓶]
+    category: container
+    usd_path: Instruments/InteractiveAssets/DistillationFlask/DistillationFlask.usd
+    supported_actions: [pick, place, pour, shake]
+  ErlenmeyerFlask:
+    aliases: [flask, erlenmeyer_flask, 锥形瓶]
+    category: container
+    variants:
+      default: protocols/Level2_Protocol1/scene.usd
+      solid: protocols/Level2_Protocol1/scene.usd
+      liquid: protocols/Level2_Protocol1/scene.usd
+    variant_property: content_phase
+    supported_actions: [pick, place, pour, shake]
+    required_anchors:
+      pick: [grisp_position]
+    variant_action_defaults:
+      solid:
+        pick:
+          orientation_profile: pick_solid
+          gripper_distance: 0.012
+        place:
+          orientation_profile: default
+          place_offset_z: 0.12
+      liquid:
+        pick:
+          orientation_profile: default
+          gripper_distance: 0.008
+        pour:
+          orientation_profile: pour_default
+          pour_speed: -1.0
+        place:
+          orientation_profile: default
+          place_offset_z: 0.08
+  FlatBottomFlask:
+    aliases: [flat_bottom_flask, 平底烧瓶]
+    category: container
+    usd_path: Instruments/InteractiveAssets/FlatBottomFlask/Flat_bottomFlask_01/Flat_bottomFlask_01.usd
+    supported_actions: [pick, place, pour, shake]
+  KippsApparatus:
+    aliases: [kipps_apparatus, 基普发生器]
+    category: container
+    usd_path: Instruments/InteractiveAssets/KippsApparatus/Kipp_sApparatus.usd
+    supported_actions: [pick, place]
+  RoundBottomFlask:
+    aliases: [round_bottom_flask, 圆底烧瓶]
+    category: container
+    usd_path: Instruments/InteractiveAssets/RoundBottomFlask/Round_bottomFlask_02/Round_bottomFlask_02.usd
+    supported_actions: [pick, place, pour, shake]
+  SuctionFlask:
+    aliases: [suction_flask, 抽滤瓶]
+    category: container
+    usd_path: Instruments/InteractiveAssets/SuctionFlask/SuctionFlask.usd
+    supported_actions: [pick, place, pour]
+  TitrationFlasks:
+    aliases: [titration_flask, 滴定瓶]
+    category: container
+    usd_path: Instruments/InteractiveAssets/TitrationFlasks/TitrationFlasks.usd
+    supported_actions: [pick, place, pour]
+  VolumetricBottle:
+    aliases: [volumetric_bottle, 容量瓶]
+    category: container
+    usd_path: Instruments/InteractiveAssets/VolumetricBottle/VolumetricBottle.usd
+    supported_actions: [pick, place, pour, shake]
+  Centrifuge:
+    aliases: [centrifuge, 离心机]
+    category: device
+    usd_path: Instruments/PlacementAssets/DesktopLevel/Centrifuge/Centrifuge_01/Centrifuge_01.usd
+    supported_actions: [press]
+    required_anchors: {press: [press_position]}
+  DryingBox:
+    aliases: [drying_box, 干燥箱]
+    category: door_device
+    usd_path: protocols/Level2_Protocol1/scene.usd
+    supported_actions: [open, close]
+    required_anchors: {open: [handle, RevoluteJoint], close: [handle, RevoluteJoint]}
+  ElectricSoilPenetrometer:
+    aliases: [electric_soil_penetrometer, 电动土壤穿透仪]
+    category: device
+    usd_path: Instruments/PlacementAssets/DesktopLevel/ElectricSoilPenetrometer/ElectricSoilPenetrometer.usd
+    supported_actions: [press]
+    required_anchors: {press: [press_position]}
+  ElectronicScale:
+    aliases: [electronic_scale, 电子天平]
+    category: device
+    usd_path: Instruments/PlacementAssets/DesktopLevel/ElectronicScale/ElectronicScale_01/ElectronicScale_01.usd
+    supported_actions: [press_z]
+    required_anchors: {press_z: [pressz_position]}
+  HeatingPlate:
+    aliases: [heating_plate, 加热板]
+    category: device
+    usd_path: protocols/Level2_Protocol1/scene.usd
+    supported_actions: [place_target, press]
+    required_anchors: {place_target: [place_position], press: [press_position]}
+  InfraredSpectrophotometer:
+    aliases: [infrared_spectrophotometer, 红外分光光度计]
+    category: device
+    usd_path: Instruments/PlacementAssets/DesktopLevel/InfraredSpectrophotometer/InfraredSpectrophotometer.usd
+    supported_actions: [press_z]
+    required_anchors: {press_z: [pressz_position]}
+  Oscillator:
+    aliases: [oscillator, 振荡器]
+    category: device
+    usd_path: Instruments/PlacementAssets/DesktopLevel/Oscillator/Oscillator.usd
+    supported_actions: [press]
+    required_anchors: {press: [press_position]}
+  pHMeter:
+    aliases: [ph_meter, pH计]
+    category: device
+    usd_path: Instruments/PlacementAssets/DesktopLevel/pHMeter/pHMeter.usd
+    supported_actions: [press_z]
+    required_anchors: {press_z: [pressz_position]}
+  TubeRack:
+    aliases: [tube_rack, 试管架]
+    category: placement_target
+    usd_path: Instruments/PlacementAssets/DesktopLevel/TubeRack/TubeRack.usd
+    supported_actions: [place_target]
+    required_anchors: {place_target: [place_position]}
+  TargetPlatform:
+    aliases: [target_platform, target_plat, 目标平台]
+    category: placement_target
+    usd_path: protocols/Level2_Protocol1/scene.usd
+    supported_actions: [place_target]

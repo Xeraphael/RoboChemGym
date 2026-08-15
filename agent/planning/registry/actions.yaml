@@ -1,0 +1,164 @@
+actions:
+  pick:
+    object_categories: [container]
+    target_categories: []
+    adapter: pick
+    verifier: pick
+    required_object: true
+    required_target: false
+    max_frames: 6000
+    preconditions: [gripper_empty]
+    effects: [hold_object]
+    supported_parameters: [orientation_profile, pre_offset_z, after_offset_z, pre_offset_x, gripper_distance]
+    tunable_parameters: [orientation_profile, pre_offset_z, after_offset_z, pre_offset_x, gripper_distance]
+    parameter_constraints:
+      orientation_profile: {kind: string, choices: [default, pick_solid]}
+      pre_offset_z: {kind: number, minimum: 0.05, maximum: 0.25}
+      after_offset_z: {kind: number, minimum: 0.05, maximum: 0.30}
+      pre_offset_x: {kind: number, minimum: 0.0, maximum: 0.20}
+      gripper_distance: {kind: number, minimum: 0.001, maximum: 0.04}
+    default_parameters:
+      orientation_profile: default
+      pre_offset_z: 0.12
+      after_offset_z: 0.15
+      pre_offset_x: 0.1
+    degradable_modifiers: []
+  place:
+    object_categories: [container]
+    target_categories: [container, device, placement_target]
+    adapter: place
+    verifier: place
+    required_object: true
+    required_target: true
+    max_frames: 6000
+    preconditions: [holding_object]
+    effects: [object_at_target, release_object]
+    supported_parameters: [orientation_profile, pre_place_z, place_offset_z]
+    tunable_parameters: [orientation_profile, pre_place_z, place_offset_z]
+    parameter_constraints:
+      orientation_profile: {kind: string, choices: [default]}
+      pre_place_z: {kind: number, minimum: 0.05, maximum: 0.35}
+      place_offset_z: {kind: number, minimum: 0.0, maximum: 0.20}
+    default_parameters:
+      orientation_profile: default
+      pre_place_z: 0.2
+      place_offset_z: 0.05
+    degradable_modifiers: []
+  pour:
+    object_categories: [container]
+    target_categories: [container]
+    adapter: pour
+    verifier: pour
+    required_object: true
+    required_target: true
+    max_frames: 5000
+    preconditions: [holding_object]
+    effects: []
+    supported_parameters: [orientation_profile, pour_speed]
+    tunable_parameters: [orientation_profile, pour_speed]
+    parameter_constraints:
+      orientation_profile: {kind: string, choices: [pour_default]}
+      pour_speed: {kind: number, minimum: -2.0, maximum: -0.1}
+    default_parameters:
+      orientation_profile: pour_default
+    degradable_modifiers: [speed]
+  press:
+    object_categories: []
+    target_categories: [device]
+    adapter: press
+    verifier: press
+    required_object: false
+    required_target: true
+    max_frames: 5000
+    preconditions: [gripper_empty]
+    effects: [target_activated]
+    supported_parameters: [orientation_profile, press_distance]
+    tunable_parameters: [orientation_profile, press_distance]
+    parameter_constraints:
+      orientation_profile: {kind: string, choices: [default]}
+      press_distance: {kind: number, minimum: 0.02, maximum: 0.12}
+    default_parameters:
+      orientation_profile: default
+      press_distance: 0.07
+    degradable_modifiers: [duration, until]
+  press_z:
+    object_categories: []
+    target_categories: [device]
+    adapter: press_z
+    verifier: press_z
+    required_object: false
+    required_target: true
+    max_frames: 5000
+    preconditions: [gripper_empty]
+    effects: [target_activated]
+    supported_parameters: [orientation_profile, press_distance]
+    tunable_parameters: [orientation_profile, press_distance]
+    parameter_constraints:
+      orientation_profile: {kind: string, choices: [press_z_default]}
+      press_distance: {kind: number, minimum: 0.02, maximum: 0.12}
+    default_parameters:
+      orientation_profile: press_z_default
+      press_distance: 0.05
+    degradable_modifiers: [duration, until]
+  shake:
+    object_categories: [container]
+    target_categories: []
+    adapter: shake
+    verifier: shake
+    required_object: true
+    required_target: false
+    max_frames: 6000
+    preconditions: [holding_object]
+    effects: []
+    supported_parameters: [orientation_profile, shake_distance]
+    tunable_parameters: [orientation_profile, shake_distance]
+    parameter_constraints:
+      orientation_profile: {kind: string, choices: [default]}
+      shake_distance: {kind: number, minimum: 0.04, maximum: 0.15}
+    default_parameters:
+      orientation_profile: default
+      shake_distance: 0.1
+    degradable_modifiers: [duration]
+  open:
+    object_categories: []
+    target_categories: [door_device]
+    adapter: open
+    verifier: open
+    required_object: false
+    required_target: true
+    max_frames: 8000
+    preconditions: [gripper_empty, target_closed]
+    effects: [target_open]
+    supported_parameters: [orientation_profile, angle, furniture_type]
+    tunable_parameters: [orientation_profile, angle]
+    parameter_constraints:
+      orientation_profile: {kind: string, choices: [open_default]}
+      angle: {kind: number, minimum: 20.0, maximum: 90.0}
+      furniture_type: {kind: string, choices: [door, drawer]}
+    default_parameters:
+      orientation_profile: open_default
+      furniture_type: door
+      angle: 50.0
+    degradable_modifiers: []
+  close:
+    object_categories: []
+    target_categories: [door_device]
+    adapter: close
+    verifier: close
+    required_object: false
+    required_target: true
+    max_frames: 8000
+    preconditions: [gripper_empty, target_open]
+    effects: [target_closed]
+    supported_parameters: [orientation_profile, angle, furniture_type, push_distance]
+    tunable_parameters: [orientation_profile, angle, push_distance]
+    parameter_constraints:
+      orientation_profile: {kind: string, choices: [close_default]}
+      angle: {kind: number, minimum: 20.0, maximum: 90.0}
+      furniture_type: {kind: string, choices: [door, drawer]}
+      push_distance: {kind: number, minimum: 0.05, maximum: 0.40}
+    default_parameters:
+      orientation_profile: close_default
+      furniture_type: door
+      angle: 50.0
+    degradable_modifiers: []

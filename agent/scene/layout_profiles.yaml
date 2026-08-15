@@ -1,0 +1,15 @@
+profiles:
+  lab_table_franka:
+    surface_z: 0.775
+    grid_resolution: 0.05
+    minimum_spacing: 0.08
+    control_slots:
+      device: [0.179647, -0.180638, 0.775]
+      primary_container: [0.179647, -0.030638, 0.775]
+      secondary_container: [0.179647, 0.069362, 0.775]
+      placement_target: [0.179647, 0.169362, 0.775]
+    reachable_region:
+      type: ellipse
+      center: [0.174972, -0.011500]
+      semi_axes: [0.445325, 0.169138]
+      rotation: 1.573

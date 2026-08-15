@@ -1,0 +1,106 @@
+name: Level2_Protocol1_randomized_collection
+task_type: Level2_Protocol1
+controller_type: plan_executor
+mode: collect
+usd_path: protocols/Level2_Protocol1/scene.usd
+max_episodes: 20
+
+randomization:
+  seed: 20260813
+  episodes: 20
+  retry_policy: reuse_episode_sample
+  reachable_workspace:
+    center: [0.174972, -0.011500]
+    semi_axes: [0.445325, 0.169138]
+    rotation: 1.573
+    z: [0.775, 0.775]
+  scene:
+    object_position:
+      /World/ErlenmeyerFlask_Solid1:
+        x: [0.17, 0.19]
+        y: [-0.04, -0.02]
+        z: [0.775, 0.775]
+      /World/ErlenmeyerFlask_Liquid1:
+        x: [0.17, 0.19]
+        y: [0.068, 0.08]
+        z: [0.775, 0.775]
+    object_yaw: {}
+    camera_pose: {}
+    lighting:
+      /World/CylinderLight:
+        intensity: [1260.0, 2340.0]
+        color_temperature: [4500.0, 6500.0]
+    material:
+      /World/table/surface:
+        candidates:
+          - /World/Looks/table_material1
+          - /World/Looks/table_material2
+          - /World/Looks/table_material3
+          - /World/Looks/table_material4
+          - /World/Looks/table_material5
+  physics:
+    friction: {}
+    mass_scale: {}
+
+task:
+  return_object_path: /World/ErlenmeyerFlask_Liquid1
+  return_target_path: /World/TargetPlatform1
+  obj_paths:
+    - path: /World/ErlenmeyerFlask_Solid1
+    - path: /World/ErlenmeyerFlask_Liquid1
+    - path: /World/HeatingPlate
+    - path: /World/TargetPlatform1
+
+cameras:
+  - prim_path: /World/Camera1
+    name: camera_1
+    translation: [-3.20212, 1.87906, 2.47941]
+    resolution: [256, 256]
+    focal_length: 6
+    orientation: [-0.42694, -0.30008, 0.49052, 0.6979]
+    image_type: rgb
+  - prim_path: /World/Camera2
+    name: camera_2
+    translation: [0.77641, -0.24626, 2.11587]
+    resolution: [256, 256]
+    focal_length: 1.5
+    orientation: [0.67568, 0.19828, 0.19992, 0.6813]
+    image_type: rgb
+  - prim_path: /World/Franka/panda_hand/arm_camera
+    name: camera_3
+    resolution: [256, 256]
+    image_type: rgb
+
+robot:
+  type: franka
+  position: [-0.4, 0, 0.66]
+
+collector:
+  type: default
+  compression: gzip
+  split_seed: 20260813
+  video:
+    enabled: true
+    every_n_episodes: 10
+    frame_stride: 4
+    source_fps: 60
+
+hydra:
+  run:
+    dir: outputs/Level2_Protocol1_randomized/hydra
+
+multi_run:
+  run_dir: outputs/Level2_Protocol1_randomized
+
+agent:
+  execution_backend: plan_executor
+  plan_path: protocols/Level2_Protocol1/agent_plan.json
+  validation_report_path: protocols/Level2_Protocol1/validation_report.json
+  scene_preflight_path: protocols/Level2_Protocol1/scene_preflight.json
+  execution_report_path: outputs/Level2_Protocol1_randomized/execution_report.json
+  trajectory_path: outputs/Level2_Protocol1_randomized/trajectory.json
+  state_anchors:
+    ErlenmeyerFlask_Solid1: [grisp_position]
+    ErlenmeyerFlask_Liquid1: [grisp_position]
+    HeatingPlate: [place_position, press_position]
+    TargetPlatform1: []

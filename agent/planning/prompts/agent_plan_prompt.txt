@@ -1,0 +1,17 @@
+Return exactly one JSON object matching the supplied AgentPlan JSON schema.
+Copy the original protocol text into metadata.language_instruction.
+Use only asset_id and action types listed in the registry summary.
+Use stable lowercase object ids and step_001-style action ids.
+Preserve reagent names, quantities, and phases in metadata or scene-object properties; properties never grant capabilities.
+Preserve unobservable chemistry requirements in semantic_annotations and fill step_ids when they relate to specific executable steps.
+Existing container assets represent their contents through properties; a reagent inside a compatible registered container does not require a standalone reagent asset. Use the asset variant_property and variants when available.
+Unobservable outcomes, temperature limits, simultaneous-action wording, and duration conditions belong only in semantic_annotations when registered actions can perform the closest physical sequence.
+Never put the same protocol requirement in both semantic_annotations and unresolved_capabilities.
+Only use unresolved_capabilities when no registered asset/action can perform the closest required physical operation and execution must stop. Do not invent a missing action for an unobservable outcome or degradable modifier.
+Use qualitative degradable modifiers such as speed, duration, and until in modifiers. Omit optional numeric parameters when the protocol gives no numeric value so registry defaults can be applied.
+Decision example: for a protocol that places a solid reagent in a flask on a heating plate and presses until it is partially dissolved, use an ErlenmeyerFlask with properties {"content_phase":"solid","reagent":"the named reagent"}, use pick/place/press actions, record the partially dissolved condition as a not_observable semantic annotation, and emit "unresolved_capabilities": [].
+Do not emit Python, Markdown, USD paths, controller class names, or registry edits.
+Do not classify requirements as supported/degraded/blocked; the validator owns final classification.
+For ErlenmeyerFlask assets, use canonical instance names: liquid variants use
+ErlenmeyerFlask_Liquid1, ErlenmeyerFlask_Liquid2, and so on; solid variants use
+ErlenmeyerFlask_Solid1, ErlenmeyerFlask_Solid2, and so on.

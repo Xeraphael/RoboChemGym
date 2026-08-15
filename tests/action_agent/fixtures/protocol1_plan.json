@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0",
+  "plan_id": "benzoic_acid_dissolution",
+  "metadata": {
+    "language_instruction": "Dissolve benzoic acid with sulfuric acid on the heating plate"
+  },
+  "scene": {
+    "objects": [
+      {"id": "solid_flask", "asset_id": "ErlenmeyerFlask", "instance_name": "ErlenmeyerFlask_Solid1", "role": "reagent_container", "properties": {"content_phase": "solid", "reagent": "benzoic_acid", "mass_g": 5.0, "amount_mol": 0.041}},
+      {"id": "liquid_flask", "asset_id": "ErlenmeyerFlask", "instance_name": "ErlenmeyerFlask_Liquid1", "role": "reagent_container", "properties": {"content_phase": "liquid", "reagent": "concentrated_sulfuric_acid", "volume_ml": 0.5}},
+      {"id": "heating_plate", "asset_id": "HeatingPlate", "instance_name": "HeatingPlate", "role": "device", "properties": {}},
+      {"id": "return_platform", "asset_id": "TargetPlatform", "instance_name": "TargetPlatform1", "role": "placement_target", "properties": {}}
+    ]
+  },
+  "actions": [
+    {"id": "step_001", "type": "pick", "object": "solid_flask", "target": null, "parameters": {}, "modifiers": {}, "source_text": "抓取装有苯甲酸的锥形瓶"},
+    {"id": "step_002", "type": "place", "object": "solid_flask", "target": "heating_plate", "parameters": {}, "modifiers": {}, "source_text": "放在加热板上"},
+    {"id": "step_003", "type": "press", "object": null, "target": "heating_plate", "parameters": {}, "modifiers": {"until": "partially_dissolved"}, "source_text": "按按钮开始搅拌至部分溶解"},
+    {"id": "step_004", "type": "pick", "object": "liquid_flask", "target": null, "parameters": {}, "modifiers": {}, "source_text": "抓取浓硫酸锥形瓶"},
+    {"id": "step_005", "type": "pour", "object": "liquid_flask", "target": "solid_flask", "parameters": {}, "modifiers": {"speed": "slow"}, "source_text": "缓慢倒入苯甲酸容器"},
+    {"id": "step_006", "type": "place", "object": "liquid_flask", "target": "return_platform", "parameters": {}, "modifiers": {}, "source_text": "将浓硫酸锥形瓶放回原处"}
+  ],
+  "semantic_annotations": [
+    {"source_text": "搅拌至苯甲酸部分溶解", "status": "not_observable", "reason": "environment has no dissolution state", "step_ids": ["step_003"]},
+    {"source_text": "边倾倒边搅拌", "status": "approximated", "reason": "heating plate is activated before sequential pouring", "step_ids": ["step_003", "step_005"]},
+    {"source_text": "避免局部过热", "status": "not_observable", "reason": "environment has no temperature field", "step_ids": ["step_003"]}
+  ],
+  "unresolved_capabilities": []
+}

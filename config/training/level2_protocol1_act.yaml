@@ -1,0 +1,41 @@
+dataset_manifest: outputs/Level2_Protocol1_randomized/dataset/manifest.json
+split_version: "1.0"
+model:
+  type: act
+  horizon: 60
+  arguments:
+    kl_weight: 0.1
+    hidden_dim: 256
+    num_heads: 8
+    num_layers: 6
+    dropout: 0.1
+    dim_feedforward: 2048
+    enc_layers: 4
+    dec_layers: 6
+    nheads: 8
+    pre_norm: false
+    position_embedding: sine
+    lr_backbone: 0.00001
+    masks: false
+    backbone: resnet18
+    dilation: false
+optimizer:
+  learning_rate: 0.0001
+  weight_decay: 0.000001
+scheduler:
+  type: cosine
+  warmup_steps: 500
+batch_size: 16
+num_workers: 4
+sample_stride: 30
+epochs: 20
+seed: 20260813
+device: cuda:0
+output_dir: outputs/training/Level2_Protocol1_ACT
+evaluation_interval: 1
+checkpoint:
+  metric: val_loss
+  mode: min
+  every_n_epochs: 1
+  keep_numbered: 3
+resume: true

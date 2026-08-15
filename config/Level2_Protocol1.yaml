@@ -1,0 +1,67 @@
+name: Level2_Protocol1
+task_type: Level2_Protocol1
+controller_type: plan_executor
+mode: execute
+usd_path: protocols/Level2_Protocol1/scene.usd
+max_episodes: 1
+
+task:
+  return_object_path: /World/ErlenmeyerFlask_Liquid1
+  return_target_path: /World/TargetPlatform1
+  obj_paths:
+    - path: /World/ErlenmeyerFlask_Solid1
+    - path: /World/ErlenmeyerFlask_Liquid1
+    - path: /World/HeatingPlate
+    - path: /World/TargetPlatform1
+
+cameras:
+  - prim_path: /World/Camera1
+    name: camera_1
+    translation: [-3.20212, 1.87906, 2.47941]
+    resolution: [1280, 720]
+    focal_length: 6
+    orientation: [-0.42694, -0.30008, 0.49052, 0.6979]
+    image_type: rgb
+  - prim_path: /World/Camera2
+    name: camera_2
+    translation: [0.77641, -0.24626, 2.11587]
+    resolution: [1280, 720]
+    focal_length: 1.5
+    orientation: [0.67568, 0.19828, 0.19992, 0.6813]
+    image_type: rgb
+  - prim_path: /World/Franka/panda_hand/arm_camera
+    name: camera_3
+    resolution: [1280, 720]
+    image_type: rgb
+
+robot:
+  type: franka
+  position: [-0.4, 0, 0.66]
+
+collector:
+  type: default
+  compression: gzip
+  video:
+    enabled: true
+    frame_stride: 4
+    source_fps: 60
+
+hydra:
+  run:
+    dir: outputs/Level2_Protocol1/hydra
+
+multi_run:
+  run_dir: outputs/Level2_Protocol1
+
+agent:
+  execution_backend: plan_executor
+  plan_path: protocols/Level2_Protocol1/agent_plan.json
+  validation_report_path: protocols/Level2_Protocol1/validation_report.json
+  scene_preflight_path: protocols/Level2_Protocol1/scene_preflight.json
+  execution_report_path: outputs/Level2_Protocol1/execution_report.json
+  trajectory_path: outputs/Level2_Protocol1/trajectory.json
+  state_anchors:
+    ErlenmeyerFlask_Solid1: [grisp_position]
+    ErlenmeyerFlask_Liquid1: [grisp_position]
+    HeatingPlate: [place_position, press_position]
+    TargetPlatform1: []

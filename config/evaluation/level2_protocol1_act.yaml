@@ -1,0 +1,18 @@
+base_collection_config: config/collection/level2_protocol1.yaml
+checkpoint_path: outputs/training/Level2_Protocol1_ACT/checkpoints/best.ckpt
+output_dir: outputs/evaluation/Level2_Protocol1_ACT
+max_steps: 4200
+max_joint_step: 0.05
+video_every_n_episodes: 10
+seed_sets:
+  validation:
+    episodes: 3
+    root_seed: 20260814
+    randomized: true
+  test:
+    episodes: 3
+    root_seed: 20260815
+    randomized: true
+  reference:
+    episodes: 1
+    randomized: false

@@ -1,0 +1,45 @@
+{
+  "plan_fingerprint": "4a40e6df9e98890b9425f554085b7d11dd1c71f323ec6390888bf74ee41cef07",
+  "registry_fingerprint": "39ca4cdbc3c646e54f7a39216628b1dad141f31a2a068d8069d0381e024b95c3",
+  "valid": true,
+  "issues": [
+    {
+      "code": "SEMANTIC_DEGRADATION",
+      "severity": "warning",
+      "level": "degraded",
+      "message": "搅拌至苯甲酸部分溶解: environment has no dissolution state",
+      "step_id": null,
+      "field": null,
+      "repair_hint": null
+    },
+    {
+      "code": "SEMANTIC_DEGRADATION",
+      "severity": "warning",
+      "level": "degraded",
+      "message": "边倾倒边搅拌: heating plate is activated before sequential pouring",
+      "step_id": null,
+      "field": null,
+      "repair_hint": null
+    },
+    {
+      "code": "SEMANTIC_DEGRADATION",
+      "severity": "warning",
+      "level": "degraded",
+      "message": "避免局部过热: environment has no temperature field",
+      "step_id": null,
+      "field": null,
+      "repair_hint": null
+    }
+  ],
+  "supported_count": 4,
+  "degraded_count": 5,
+  "blocked_count": 0,
+  "step_coverage": {
+    "step_001": "supported",
+    "step_002": "supported",
+    "step_003": "degraded",
+    "step_004": "supported",
+    "step_005": "degraded",
+    "step_006": "supported"
+  }
+}
