@@ -33,39 +33,6 @@ EXPECTED_COVERAGE = {
 }
 CONTROLLER_IMPORTS = {
     "controllers.base_controller": "BaseController",
-    "controllers.open_controller": "OpenTaskController",
-    "controllers.pickpour_controller": "PickPourTaskController",
-    "controllers.placepress_controller": "PlacePressTaskController",
-    "controllers.pick_controller": "PickTaskController",
-    "controllers.pour_controller": "PourTaskController",
-    "controllers.place_controller": "PlaceTaskController",
-    "controllers.press_controller": "PressTaskController",
-    "controllers.shake_controller": "ShakeTaskController",
-    "controllers.stir_controller": "StirTaskController",
-    "controllers.stirglassrod_controller": "StirGlassrodTaskController",
-    "controllers.pickplace_controller": "PickPlaceTaskController",
-    "controllers.shakebeaker_controller": "ShakeBeakerTaskController",
-    "controllers.cleanbeaker_controller": "CleanBeakerTaskController",
-    "controllers.cleanbeaker7policy_controller": "CleanBeaker7PolicyTaskController",
-    "controllers.device_operate_controller": "DeviceOperateController",
-    "controllers.opentransportpour_controller": "OpenTransportPourController",
-    "controllers.LiquidMixing_controller": "LiquidMixingController",
-    "controllers.close_controller": "CloseTaskController",
-    "controllers.openclose_controller": "OpenCloseTaskController",
-    "controllers.grasp_controller": "GraspObjectTaskController",
-    "controllers.door_pick_pour_controller": "DoorPickPourTaskController",
-    "controllers.benzoic_acid_synthesis_controller": (
-        "BenzoicAcidSynthesisController"
-    ),
-    "controllers.synthesize_controller": "SynthesizeController",
-    "controllers.benzoic_acid_dissolution_controller": (
-        "BenzoicAcidDissolutionController"
-    ),
-    "controllers.beaker_pick_controller": "BeakerPickTaskController",
-    "controllers.group_beaker_scale_controller": "GroupBeakerScaleController",
-    "controllers.beaker_flask_experiment_controller": (
-        "BeakerFlaskExperimentController"
-    ),
     "controllers.policy_controller": "PolicyController",
 }
 

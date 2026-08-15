@@ -123,7 +123,9 @@ class SceneCompiler:
         if not preflight.passed:
             raise SceneCompileError("SCENE_PREFLIGHT_FAILED", "scene preflight failed")
 
-        config = yaml.safe_load((self.root / "config/protocol1.yaml").read_text(encoding="utf-8"))
+        config = yaml.safe_load(
+            (self.root / "config/Level2_Protocol1.yaml").read_text(encoding="utf-8")
+        )
         config.update({
             "name": plan.plan_id,
             "task_type": "all",

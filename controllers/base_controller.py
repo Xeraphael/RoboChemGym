@@ -2,9 +2,7 @@ from abc import ABC, abstractmethod
 from typing import Dict, Any, Tuple, Optional
 import torch
 from omegaconf import OmegaConf
-from controllers.inference_engines.inference_engine_factory import InferenceEngineFactory
 from controllers.robot_controllers.grapper_manager import Gripper
-from controllers.robot_controllers.trajectory_controller import FrankaTrajectoryController
 from factories.collector_factory import create_collector
 from utils.object_utils import ObjectUtils
 from omni.isaac.franka.controllers.rmpflow_controller import RMPFlowController as FrankaRMPFlowController
@@ -45,19 +43,17 @@ class BaseController(ABC):
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         OmegaConf.register_new_resolver("eval", lambda x: eval(x))
         if hasattr(cfg, "mode"):
-            self.mode = cfg.mode # "collect", "execute", or "infer"
+            self.mode = cfg.mode # "collect", "execute", or "evaluate"
             if self.mode == "collect":
                 self._init_collect_mode(cfg, robot)
             elif self.mode == "execute":
                 pass
-            elif self.mode == "infer":
-                self._init_infer_mode(cfg, robot)
             elif self.mode == "evaluate":
                 pass
             else:
                 raise ValueError(
                     f"Invalid mode: {self.mode}. Expected 'collect', "
-                    "'execute', 'infer', or 'evaluate'."
+                    "'execute', or 'evaluate'."
                 )
 
     @property
@@ -113,18 +109,6 @@ class BaseController(ABC):
             protocol_id=str(getattr(cfg, "name", cfg.task_type)),
             config_id=str(getattr(cfg, "name", cfg.task_type)),
             split_seed=int(getattr(cfg.collector, "split_seed", 20260813)),
-        )
-    
-    def _init_infer_mode(self, cfg, robot=None): 
-        """Initialize the controller for infer mode."""
-        self.trajectory_controller = FrankaTrajectoryController(
-            name="trajectory_controller",
-            robot_articulation=robot,
-            use_interpolation=False
-        )
-        
-        self.inference_engine = InferenceEngineFactory.create_inference_engine(
-            cfg, self.trajectory_controller
         )
     
     def episode_num(self) -> int:

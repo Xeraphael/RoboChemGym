@@ -49,7 +49,7 @@ class AgentOrchestrator:
         
         Args:
             controller_file: controller文件路径（如 "controllers/protocol1_controller.py"）
-            config_name: 配置文件名（不含.yaml，如 "level1_pick"）
+            config_name: 配置文件名（不含.yaml，如 "Level2_Protocol1"）
             max_iterations: 最大迭代次数
             log_dir: 日志目录（已废弃，仅保留兼容性）
             python_executable: Python解释器路径（IsaacSim的python），None则使用当前
@@ -653,7 +653,7 @@ def main():
         "--config-name",
         type=str,
         required=True,
-        help="配置文件名（不含.yaml，如 level1_pick）"
+        help="配置文件名（不含.yaml，如 Level2_Protocol1）"
     )
     parser.add_argument(
         "--max-iterations",

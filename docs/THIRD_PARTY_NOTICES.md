@@ -6,7 +6,6 @@ RoboChemGym is MIT licensed except where a source file carries another notice.
 |---|---|---|
 | Action Chunking Transformer (ACT) | `policy/model/act/` | MIT; derived from [tonyzhaozh/act](https://github.com/tonyzhaozh/act) |
 | DETR components used by ACT | `policy/model/act/` | Apache-2.0; derived from [facebookresearch/detr](https://github.com/facebookresearch/detr) |
-| OpenPI client | `packages/openpi-client/` | Apache-2.0; derived from [Physical-Intelligence/openpi](https://github.com/Physical-Intelligence/openpi) |
 | imagecodecs numcodecs adapter | `policy/codecs/imagecodecs_numcodecs.py` | BSD-3-Clause; notice retained in the file |
 
 The Apache-2.0 and ACT MIT license texts are included under `LICENSES/`.

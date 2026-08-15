@@ -439,7 +439,7 @@ class SceneInitializer:
         Args:
             scene_json_path: 场景JSON文件路径
             scene_usd_path: 场景USD文件路径（用于设置usd_path字段）
-            template_yaml_path: 模板YAML文件路径（如果为None，使用protocol1.yaml）
+            template_yaml_path: 模板YAML文件路径（如果为None，使用Level2_Protocol1.yaml）
             output_yaml_path: 输出YAML文件路径（如果为None，根据JSON文件名生成）
         
         Returns:
@@ -484,7 +484,7 @@ class SceneInitializer:
             
             # 确定模板文件路径
             if template_yaml_path is None:
-                template_path = _project_root / "config" / "protocol1.yaml"
+                template_path = _project_root / "config" / "Level2_Protocol1.yaml"
             else:
                 template_path = Path(template_yaml_path)
                 if not template_path.is_absolute():

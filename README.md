@@ -3,6 +3,8 @@
 **A Protocol-Driven Generative Simulation Framework for Long-Horizon Chemical
 Manipulation**
 
+[English](README.md) | [简体中文](README_CN.md)
+
 ![RoboChemGym overview](docs/images/robochemgym-teaser.png)
 
 RoboChemGym turns natural-language chemistry protocols into executable robot
@@ -78,7 +80,7 @@ The endpoint, model, API key, timeout, and retry limit are documented in
 ### 1. Generate and execute a trajectory
 
 ```bash
-python agent/main.py --protocol examples/protocols/p0_pick_place.txt
+python agent/main.py --protocol protocols/Level2_Protocol1/protocol.txt
 ```
 
 The execution flow is:
@@ -173,10 +175,9 @@ policy/                   ACT model, datasets, runners, and workspaces
 tasks/                    Isaac task definitions
 protocols/                Reproducible Protocol bundles
 config/                   Collection, training, and evaluation configurations
-examples/protocols/       Text Protocol examples
 scripts/                  Reproducible launch commands
 tests/                    Focused code-level validation
-docs/                     Acceptance records and release documentation
+docs/                     Project images and third-party notices
 ```
 
 ## Assets

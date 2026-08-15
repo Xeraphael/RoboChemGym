@@ -28,7 +28,7 @@ def parse_args():
                        help='Run in headless mode (default is with GUI)')
     parser.add_argument('--no-video', action='store_true', 
                        help='Disable video display and saving')
-    parser.add_argument('--config-name', type=str, default='level3_Heat_Liquid',
+    parser.add_argument('--config-name', type=str, default='Level2_Protocol1',
                        help='Configuration file name (without .yaml extension)')
     parser.add_argument('--config-dir', type=str, default=None,
                        help='Configuration file directory')

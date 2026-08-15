@@ -6,7 +6,7 @@ Main Wrapper - 监控模式启动包装器
 它会动态注入监控器到 controller 的创建过程中。
 
 使用方式：
-    python agent/action/monitoring/main_wrapper.py --config-name level1_pick
+    python agent/action/monitoring/main_wrapper.py --config-name Level2_Protocol1
     
 环境变量：
     AGENT_MONITOR_MODE=true  # 启用监控
@@ -93,4 +93,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

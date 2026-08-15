@@ -47,35 +47,7 @@ ACTION_NAMES = [
     "close",
 ]
 
-EXISTING_REGISTRATIONS = [
-    ("pickpour", "PickPourTaskController"),
-    ("open", "OpenTaskController"),
-    ("close", "CloseTaskController"),
-    ("openclose", "OpenCloseTaskController"),
-    ("pick", "PickTaskController"),
-    ("pour", "PourTaskController"),
-    ("place", "PlaceTaskController"),
-    ("pickplace", "PickPlaceTaskController"),
-    ("placepress", "PlacePressTaskController"),
-    ("press", "PressTaskController"),
-    ("shake", "ShakeTaskController"),
-    ("stir", "StirTaskController"),
-    ("stirglassrod", "StirGlassrodTaskController"),
-    ("shakebeaker", "ShakeBeakerTaskController"),
-    ("cleanbeaker", "CleanBeakerTaskController"),
-    ("cleanbeaker7policy", "CleanBeaker7PolicyTaskController"),
-    ("device_operate", "DeviceOperateController"),
-    ("OpenTransportPour", "OpenTransportPourController"),
-    ("LiquidMixing", "LiquidMixingController"),
-    ("grasp", "GraspObjectTaskController"),
-    ("door_pick_pour", "DoorPickPourTaskController"),
-    ("benzoic_acid_synthesis_experiment", "BenzoicAcidSynthesisController"),
-    ("synthesize_experiment", "SynthesizeController"),
-    ("benzoic_acid_dissolution_experiment", "BenzoicAcidDissolutionController"),
-    ("beaker_pick", "BeakerPickTaskController"),
-    ("group_beaker_scale_experiment", "GroupBeakerScaleController"),
-    ("beaker_flask_experiment", "BeakerFlaskExperimentController"),
-]
+EXISTING_REGISTRATIONS = []
 
 
 def factory_tree():

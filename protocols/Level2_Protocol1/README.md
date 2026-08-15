@@ -9,6 +9,7 @@ This bundle records the validated six-step benzoic-acid dissolution protocol:
 5. Pour into the solid flask.
 6. Return the liquid flask to its original location.
 
+`protocol.txt` contains the natural-language input for the Action Agent.
 `agent_plan.json` is the executable structured plan. `validation_report.json`
 and `scene_preflight.json` are the pre-execution validation artifacts.
 `scene.usd` is the exact scene used by `config/Level2_Protocol1.yaml`.
