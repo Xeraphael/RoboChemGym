@@ -4,6 +4,5 @@ title: "RoboChemGym: A Protocol-Driven Generative Simulation Framework for Long-
 type: software
 authors:
   - name: "RoboChemGym Contributors"
-version: 0.1.0
 date-released: 2026-08-15
 license: MIT

@@ -130,7 +130,7 @@ python collect.py --config config/collection/example_protocol.yaml \
   --/rtx/verifyDriverVersion/enabled=false
 ```
 
-The v0.1 configuration randomizes object position, light intensity and color
+The bundled configuration randomizes object position, light intensity and color
 temperature, and existing work-surface materials. Resolved values are recorded
 in the episode manifest. Episodes are first written as partial files and enter a
 dataset split only after a successful close.
@@ -161,8 +161,7 @@ The evaluation report supports:
 | Episode length | Executed control steps per episode |
 | Terminal distance | Final object-to-target distance where observable |
 
-No trained policy or policy performance claim is part of the v0.1 source
-acceptance.
+No trained policy or policy performance claim is part of the source release.
 
 ## Code Structure
 

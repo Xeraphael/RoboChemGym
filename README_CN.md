@@ -121,7 +121,7 @@ python collect.py --config config/collection/example_protocol.yaml \
   --/rtx/verifyDriverVersion/enabled=false
 ```
 
-v0.1 配置会随机化物体位置、灯光强度与色温，以及已有的工作台材质。每个
+内置配置会随机化物体位置、灯光强度与色温，以及已有的工作台材质。每个
 episode 的实际随机化结果会写入 manifest。Episode 首先写入临时文件，只有
 成功关闭文件后才会加入数据划分。
 
@@ -151,7 +151,7 @@ python evaluate.py --config config/evaluation/example_protocol_act.yaml \
 | Episode 长度 | 每个 episode 执行的控制步数 |
 | 终止距离 | 可观测时物体与目标之间的最终距离 |
 
-v0.1 源码验收不包含训练完成的策略或策略效果声明。
+当前源码发布不包含训练完成的策略或策略效果声明。
 
 ## 代码结构
 
