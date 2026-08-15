@@ -117,8 +117,7 @@ python agent/main.py --resume outputs/action_agent/<run-id>
 ### 2. 采集随机化 Episode
 
 ```bash
-python collect.py --config config/collection/example_protocol.yaml \
-  --/rtx/verifyDriverVersion/enabled=false
+python collect.py --config config/collection/example_protocol.yaml
 ```
 
 内置配置会随机化物体位置、灯光强度与色温，以及已有的工作台材质。每个
@@ -128,8 +127,7 @@ episode 的实际随机化结果会写入 manifest。Episode 首先写入临时�
 ### 3. 部署并评测
 
 ```bash
-python evaluate.py --config config/evaluation/example_protocol_act.yaml \
-  --/rtx/verifyDriverVersion/enabled=false
+python evaluate.py --config config/evaluation/example_protocol_act.yaml
 ```
 
 评测结果写入
@@ -177,12 +175,6 @@ docs/                     项目图片和第三方声明
 
 旧的专有实验室场景和私有仪器资产库不属于本次发布。Isaac Sim 及其运行时
 资产需要单独安装。
-
-## Isaac Sim 驱动校验
-
-RoboChemGym 固定使用 Isaac Sim `4.2.0.2`。项目入口会注入
-`--/rtx/verifyDriverVersion/enabled=false`，用于绕过 Kit 106.1 的驱动版本
-解析问题，不会关闭渲染或物理功能。也可以像上面的命令一样显式传入该参数。
 
 ## 引用
 

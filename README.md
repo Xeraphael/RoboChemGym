@@ -126,8 +126,7 @@ configuration, and scene under
 ### 2. Collect randomized episodes
 
 ```bash
-python collect.py --config config/collection/example_protocol.yaml \
-  --/rtx/verifyDriverVersion/enabled=false
+python collect.py --config config/collection/example_protocol.yaml
 ```
 
 The bundled configuration randomizes object position, light intensity and color
@@ -138,8 +137,7 @@ dataset split only after a successful close.
 ### 3. Deploy and evaluate
 
 ```bash
-python evaluate.py --config config/evaluation/example_protocol_act.yaml \
-  --/rtx/verifyDriverVersion/enabled=false
+python evaluate.py --config config/evaluation/example_protocol_act.yaml
 ```
 
 Evaluation runs are written to
@@ -189,13 +187,6 @@ their paths are updated.
 
 Legacy proprietary lab scenes and the private instrument library are not part of
 this release. Isaac Sim and its runtime assets must be installed separately.
-
-## Isaac Sim Driver Verification
-
-RoboChemGym remains pinned to Isaac Sim `4.2.0.2`. Project entry points inject
-`--/rtx/verifyDriverVersion/enabled=false` to bypass the Kit 106.1 driver-version
-parsing issue without disabling rendering or physics. Passing the argument
-explicitly is also supported, as shown above.
 
 ## Citation
 
