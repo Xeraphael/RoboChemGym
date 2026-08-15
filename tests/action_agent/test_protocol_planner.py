@@ -39,7 +39,7 @@ class FakeClient:
 
 def plan_json(actions: list[dict]) -> str:
     return AgentPlan(
-        plan_id="protocol1",
+        plan_id="example_protocol",
         scene={"objects": [
             {"id": "a", "asset_id": "ErlenmeyerFlask", "instance_name": "FlaskA", "role": "container"},
             {"id": "b", "asset_id": "ErlenmeyerFlask", "instance_name": "FlaskB", "role": "container"},

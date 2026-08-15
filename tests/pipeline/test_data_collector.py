@@ -41,11 +41,11 @@ class DataCollectorTests(unittest.TestCase):
     def test_dataset_identity_binds_successful_episodes_and_splits(self):
         manifest = {
             "config_id": "collection",
-            "protocol_id": "protocol1",
+            "protocol_id": "example_protocol",
             "schema_version": "1.0",
             "episodes": [
                 {
-                    "episode_id": "protocol1-0000",
+                    "episode_id": "example_protocol-0000",
                     "status": "completed",
                     "success": True,
                     "length": 10,
@@ -56,7 +56,7 @@ class DataCollectorTests(unittest.TestCase):
             "split_version": "1.0",
             "seed": 7,
             "splits": {
-                "train": ["protocol1-0000"],
+                "train": ["example_protocol-0000"],
                 "validation": [],
                 "test": [],
             },
@@ -76,9 +76,9 @@ class DataCollectorTests(unittest.TestCase):
     def test_commit_is_atomic_and_resume_continues_index(self):
         with tempfile.TemporaryDirectory() as tmp:
             collector = DataCollector(
-                CAMERAS, tmp, max_episodes=3, protocol_id="protocol1"
+                CAMERAS, tmp, max_episodes=3, protocol_id="example_protocol"
             )
-            self.assertEqual(collector.start_episode({"episode_seed": 4}), "protocol1-0000")
+            self.assertEqual(collector.start_episode({"episode_seed": 4}), "example_protocol-0000")
             add_step(collector)
             path = collector.commit_episode(
                 {"execution_success": True, "failed_step": None, "steps": []}
@@ -91,14 +91,14 @@ class DataCollectorTests(unittest.TestCase):
             )
             self.assertEqual(manifest["episodes"][0]["status"], "completed")
             resumed = DataCollector(
-                CAMERAS, tmp, max_episodes=3, protocol_id="protocol1"
+                CAMERAS, tmp, max_episodes=3, protocol_id="example_protocol"
             )
-            self.assertEqual(resumed.start_episode(), "protocol1-0001")
+            self.assertEqual(resumed.start_episode(), "example_protocol-0001")
 
     def test_orphaned_committed_hdf5_is_adopted(self):
         with tempfile.TemporaryDirectory() as tmp:
             collector = DataCollector(
-                CAMERAS, tmp, max_episodes=3, protocol_id="protocol1"
+                CAMERAS, tmp, max_episodes=3, protocol_id="example_protocol"
             )
             collector.start_episode({"episode_seed": 4})
             add_step(collector)
@@ -109,7 +109,7 @@ class DataCollectorTests(unittest.TestCase):
             (Path(tmp) / "dataset/reports/episode_0000.json").unlink()
 
             recovered = DataCollector(
-                CAMERAS, tmp, max_episodes=3, protocol_id="protocol1"
+                CAMERAS, tmp, max_episodes=3, protocol_id="example_protocol"
             )
             self.assertEqual(recovered.episode_count, 1)
             self.assertTrue((Path(tmp) / "dataset/reports/episode_0000.json").is_file())
@@ -119,7 +119,7 @@ class DataCollectorTests(unittest.TestCase):
     def test_act_dataset_uses_persisted_splits_and_recorded_actions(self):
         with tempfile.TemporaryDirectory() as tmp:
             collector = DataCollector(
-                CAMERAS, tmp, max_episodes=6, protocol_id="protocol1"
+                CAMERAS, tmp, max_episodes=6, protocol_id="example_protocol"
             )
             for index in range(6):
                 collector.start_episode({"episode_seed": index})

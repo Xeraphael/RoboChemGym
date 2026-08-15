@@ -77,10 +77,19 @@ The endpoint, model, API key, timeout, and retry limit are documented in
 
 ## Quick Start
 
-### 1. Generate and execute a trajectory
+### 1. Run a Protocol
+
+Write the procedure you want to execute in a text file, then pass its path to
+the Action Agent:
 
 ```bash
-python agent/main.py --protocol protocols/Level2_Protocol1/protocol.txt
+python agent/main.py --protocol path/to/protocol.txt
+```
+
+For example, run the bundled Protocol with:
+
+```bash
+python agent/main.py --protocol protocols/example_protocol/protocol.txt
 ```
 
 The execution flow is:
@@ -110,23 +119,14 @@ The legacy code-generation backend executes LLM-generated Python. It remains
 disabled unless `--allow-unsafe-codegen` is explicitly supplied and should only
 be used in a disposable isolated environment.
 
-### 2. Run the reference Protocol
+The repository includes the corresponding reusable Plan, validation artifacts,
+configuration, and scene under
+[`protocols/example_protocol/`](protocols/example_protocol/).
 
-`Level2_Protocol1` picks the solid flask, places it on the heating plate,
-presses the control, picks the liquid flask, pours, and returns the liquid flask.
-
-```bash
-./scripts/run_level2_protocol1.sh
-```
-
-This execute-only path saves reports, trajectories, and videos without writing
-an HDF5 dataset. Its reproducible plan and scene bundle is under
-[`protocols/Level2_Protocol1/`](protocols/Level2_Protocol1/).
-
-### 3. Collect randomized episodes
+### 2. Collect randomized episodes
 
 ```bash
-python collect.py --config config/collection/level2_protocol1.yaml \
+python collect.py --config config/collection/example_protocol.yaml \
   --/rtx/verifyDriverVersion/enabled=false
 ```
 
@@ -135,15 +135,15 @@ temperature, and existing work-surface materials. Resolved values are recorded
 in the episode manifest. Episodes are first written as partial files and enter a
 dataset split only after a successful close.
 
-### 4. Deploy and evaluate
+### 3. Deploy and evaluate
 
 ```bash
-python evaluate.py --config config/evaluation/level2_protocol1_act.yaml \
+python evaluate.py --config config/evaluation/example_protocol_act.yaml \
   --/rtx/verifyDriverVersion/enabled=false
 ```
 
 Evaluation runs are written to
-`outputs/evaluation/Level2_Protocol1_ACT/runs/<run-id>/` with an explicit
+`outputs/evaluation/example_protocol_act/runs/<run-id>/` with an explicit
 `running`, `completed`, or `incomplete` status. Dataset identity, schema, camera
 order and shapes, state/action conventions, and gripper convention must match
 the checkpoint before policy control starts.
@@ -183,7 +183,7 @@ docs/                     Project images and third-party notices
 ## Assets
 
 The public source snapshot intentionally contains only the assets embedded in
-the `Level2_Protocol1` reference scene: two Erlenmeyer flask variants, a heating
+the bundled `example_protocol` scene: two Erlenmeyer flask variants, a heating
 plate, and a target platform. Other capability-registry entries are retained for
 compatibility but fail validation until redistributable assets are supplied and
 their paths are updated.

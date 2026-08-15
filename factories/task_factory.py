@@ -1,6 +1,6 @@
 from typing import Dict, Type
 
-from tasks.Level2_Protocol1_task import Level2Protocol1Task
+from tasks.example_protocol_task import ExampleProtocolTask
 from tasks.all_task import AllTask
 from tasks.base_task import BaseTask
 
@@ -19,4 +19,4 @@ def create_task(task_name: str, *args, **kwargs) -> BaseTask:
 
 
 register_task("all", AllTask)
-register_task("Level2_Protocol1", Level2Protocol1Task)
+register_task("example_protocol", ExampleProtocolTask)

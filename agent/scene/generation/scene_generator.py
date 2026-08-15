@@ -24,7 +24,7 @@ def parse_cli_args(argv=None):
     parser.add_argument(
         "scene_info_file",
         type=str,
-        help="scene_information 文件夹中的文件名（如 protocol1_scene.txt）",
+        help="scene_information 文件夹中的文件名（如 example_protocol_scene.txt）",
     )
     parser.add_argument(
         "-o",
@@ -43,7 +43,7 @@ def parse_cli_args(argv=None):
         "--base-usd",
         type=str,
         default=str(
-            _project_root / "protocols/Level2_Protocol1/scene.usd"
+            _project_root / "protocols/example_protocol/scene.usd"
         ),
         help="基础 USD 文件路径",
     )
@@ -141,7 +141,7 @@ class SceneGenerator:
         root = Path(__file__).resolve().parents[3]
         self.instruments_dir = Path(instruments_dir or root / "Instruments")
         self.base_usd_path = Path(
-            base_usd_path or root / "protocols/Level2_Protocol1/scene.usd"
+            base_usd_path or root / "protocols/example_protocol/scene.usd"
         )
         self.scene_info_dir = Path(
             scene_info_dir or root / "agent/protocol/scene_information"
@@ -661,7 +661,7 @@ def generate_scene(
     generator = SceneGenerator(
         instruments_dir=instruments_dir or str(root / "Instruments"),
         base_usd_path=base_usd_path or str(
-            root / "protocols/Level2_Protocol1/scene.usd"
+            root / "protocols/example_protocol/scene.usd"
         ),
         scene_info_dir=scene_info_dir or str(
             root / "agent/protocol/scene_information"

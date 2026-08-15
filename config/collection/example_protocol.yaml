@@ -1,8 +1,8 @@
-name: Level2_Protocol1_randomized_collection
-task_type: Level2_Protocol1
+name: example_protocol_randomized_collection
+task_type: example_protocol
 controller_type: plan_executor
 mode: collect
-usd_path: protocols/Level2_Protocol1/scene.usd
+usd_path: protocols/example_protocol/scene.usd
 max_episodes: 20
 
 randomization:
@@ -87,18 +87,18 @@ collector:
 
 hydra:
   run:
-    dir: outputs/Level2_Protocol1_randomized/hydra
+    dir: outputs/example_protocol_randomized/hydra
 
 multi_run:
-  run_dir: outputs/Level2_Protocol1_randomized
+  run_dir: outputs/example_protocol_randomized
 
 agent:
   execution_backend: plan_executor
-  plan_path: protocols/Level2_Protocol1/agent_plan.json
-  validation_report_path: protocols/Level2_Protocol1/validation_report.json
-  scene_preflight_path: protocols/Level2_Protocol1/scene_preflight.json
-  execution_report_path: outputs/Level2_Protocol1_randomized/execution_report.json
-  trajectory_path: outputs/Level2_Protocol1_randomized/trajectory.json
+  plan_path: protocols/example_protocol/agent_plan.json
+  validation_report_path: protocols/example_protocol/validation_report.json
+  scene_preflight_path: protocols/example_protocol/scene_preflight.json
+  execution_report_path: outputs/example_protocol_randomized/execution_report.json
+  trajectory_path: outputs/example_protocol_randomized/trajectory.json
   state_anchors:
     ErlenmeyerFlask_Solid1: [grisp_position]
     ErlenmeyerFlask_Liquid1: [grisp_position]

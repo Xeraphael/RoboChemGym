@@ -23,13 +23,13 @@ def parse_cli_args(argv=None):
     parser.add_argument(
         "json_file",
         type=str,
-        help="JSON 文件名（在 scenes 目录下，如 protocol1_scene.json）或完整路径",
+        help="JSON 文件名（在 scenes 目录下，如 example_protocol_scene.json）或完整路径",
     )
     parser.add_argument(
         "--usd-file",
         type=str,
         default=None,
-        help="USD 文件名（在 scenes 目录下，如 protocol1_scene.usd）或完整路径。如果未指定，从 JSON 文件名推断",
+        help="USD 文件名（在 scenes 目录下，如 example_protocol_scene.usd）或完整路径。如果未指定，从 JSON 文件名推断",
     )
     parser.add_argument(
         "-o",
@@ -349,7 +349,7 @@ class PositionUpdater:
         从 JSON 文件名更新对应的 USD 文件
         
         Args:
-            json_filename: JSON 文件名（如 "protocol1_scene.json"）
+            json_filename: JSON 文件名（如 "example_protocol_scene.json"）
             usd_filename: USD 文件名（如果为 None，则从 JSON 文件名推断）
             output_filename: 输出文件名（如果为 None 且 in_place=False，则自动生成）
             in_place: 是否直接修改原文件
@@ -363,7 +363,7 @@ class PositionUpdater:
         
         # 如果没有指定 USD 文件名，从 JSON 文件名推断
         if usd_filename is None:
-            # 例如：protocol1_scene.json -> protocol1_scene.usd
+            # 例如：example_protocol_scene.json -> example_protocol_scene.usd
             usd_filename = json_filename.replace(".json", ".usd")
         
         usd_file_path = self.scenes_dir / usd_filename

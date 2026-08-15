@@ -48,8 +48,8 @@ class AgentOrchestrator:
         初始化总控制器
         
         Args:
-            controller_file: controller文件路径（如 "controllers/protocol1_controller.py"）
-            config_name: 配置文件名（不含.yaml，如 "Level2_Protocol1"）
+            controller_file: controller文件路径（如 "controllers/example_protocol_controller.py"）
+            config_name: 配置文件名（不含.yaml，如 "example_protocol"）
             max_iterations: 最大迭代次数
             log_dir: 日志目录（已废弃，仅保留兼容性）
             python_executable: Python解释器路径（IsaacSim的python），None则使用当前
@@ -626,19 +626,19 @@ def main():
 示例用法:
   # 基本用法
   python agent/action/action_orchestrator.py \\
-      --controller controllers/protocol1_controller.py \\
-      --config-name protocol1
+      --controller controllers/example_protocol_controller.py \\
+      --config-name example_protocol
   
   # 指定最大迭代次数
   python agent/action/action_orchestrator.py \\
-      --controller controllers/protocol1_controller.py \\
-      --config-name protocol1 \\
+      --controller controllers/example_protocol_controller.py \\
+      --config-name example_protocol \\
       --max-iterations 10
   
   # 指定Python解释器（Isaac Sim环境）
   python agent/action/action_orchestrator.py \\
-      --controller controllers/protocol1_controller.py \\
-      --config-name protocol1 \\
+      --controller controllers/example_protocol_controller.py \\
+      --config-name example_protocol \\
       --python /path/to/isaac-sim/python
         """
     )
@@ -647,13 +647,13 @@ def main():
         "--controller",
         type=str,
         required=True,
-        help="Controller文件路径（如 controllers/protocol1_controller.py）"
+        help="Controller文件路径（如 controllers/example_protocol_controller.py）"
     )
     parser.add_argument(
         "--config-name",
         type=str,
         required=True,
-        help="配置文件名（不含.yaml，如 Level2_Protocol1）"
+        help="配置文件名（不含.yaml，如 example_protocol）"
     )
     parser.add_argument(
         "--max-iterations",

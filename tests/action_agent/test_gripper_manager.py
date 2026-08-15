@@ -300,7 +300,7 @@ def loaded_gripper_module(root_prim, *, extra_prims=()):
         "pxr": pxr_module,
     }
     path = ROOT / "controllers" / "robot_controllers" / "grapper_manager.py"
-    module_name = "_protocol1_gripper_manager"
+    module_name = "_example_protocol_gripper_manager"
     with patch.dict(sys.modules, stubs, clear=False):
         spec = importlib.util.spec_from_file_location(module_name, path)
         module = importlib.util.module_from_spec(spec)

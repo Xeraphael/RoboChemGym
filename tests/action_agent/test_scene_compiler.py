@@ -185,7 +185,7 @@ class SceneCompilerTests(unittest.TestCase):
         ]
         for phase, code in cases:
             with self.subTest(phase=phase), tempfile.TemporaryDirectory() as tmp:
-                artifacts = RunArtifacts.create(Path(tmp), "protocol1")
+                artifacts = RunArtifacts.create(Path(tmp), "example_protocol")
                 backend = WorkerFailingBackend(phase, code)
                 compiler = SceneCompiler(
                     CapabilityRegistry.load_default(ROOT),
@@ -214,7 +214,7 @@ class SceneCompilerTests(unittest.TestCase):
 
     def test_unexpected_build_failure_removes_partial_scene_outputs(self):
         with tempfile.TemporaryDirectory() as tmp:
-            artifacts = RunArtifacts.create(Path(tmp), "protocol1")
+            artifacts = RunArtifacts.create(Path(tmp), "example_protocol")
             compiler = SceneCompiler(
                 CapabilityRegistry.load_default(ROOT),
                 UnexpectedPartialBuildBackend(),
@@ -229,7 +229,7 @@ class SceneCompilerTests(unittest.TestCase):
 
     def test_cleanup_failure_does_not_replace_worker_error_or_diagnostics(self):
         with tempfile.TemporaryDirectory() as tmp:
-            artifacts = RunArtifacts.create(Path(tmp), "protocol1")
+            artifacts = RunArtifacts.create(Path(tmp), "example_protocol")
             compiler = SceneCompiler(
                 CapabilityRegistry.load_default(ROOT),
                 WorkerFailingBackend("build", "SCENE_WORKER_BUILD_FAILED"),
@@ -257,7 +257,7 @@ class SceneCompilerTests(unittest.TestCase):
 
     def test_cleanup_failure_does_not_replace_unexpected_build_error(self):
         with tempfile.TemporaryDirectory() as tmp:
-            artifacts = RunArtifacts.create(Path(tmp), "protocol1")
+            artifacts = RunArtifacts.create(Path(tmp), "example_protocol")
             original = RuntimeError("identity must survive cleanup")
             compiler = SceneCompiler(
                 CapabilityRegistry.load_default(ROOT),
@@ -276,7 +276,7 @@ class SceneCompilerTests(unittest.TestCase):
 
     def test_compiles_registry_assets_and_plan_executor_config(self):
         with tempfile.TemporaryDirectory() as tmp:
-            artifacts = RunArtifacts.create(Path(tmp), "protocol1")
+            artifacts = RunArtifacts.create(Path(tmp), "example_protocol")
             backend = FakeSceneBackend()
             compiler = SceneCompiler(
                 CapabilityRegistry.load_default(ROOT),
@@ -315,7 +315,7 @@ class SceneCompilerTests(unittest.TestCase):
             )
             self.assertEqual(
                 backend.objects[0].usd_path,
-                "protocols/Level2_Protocol1/scene.usd",
+                "protocols/example_protocol/scene.usd",
             )
             self.assertTrue(artifacts.scene_preflight_path.is_file())
             self.assertEqual(
@@ -325,7 +325,7 @@ class SceneCompilerTests(unittest.TestCase):
 
     def test_invalid_plan_persists_validation_and_never_builds(self):
         with tempfile.TemporaryDirectory() as tmp:
-            artifacts = RunArtifacts.create(Path(tmp), "protocol1")
+            artifacts = RunArtifacts.create(Path(tmp), "example_protocol")
             backend = FakeSceneBackend()
             plan = make_plan().model_copy(deep=True)
             plan.actions[1] = plan.actions[0].model_copy(update={"id": "step_002"})
@@ -351,7 +351,7 @@ class SceneCompilerTests(unittest.TestCase):
         for write_usd, write_json in cases:
             with self.subTest(write_usd=write_usd, write_json=write_json):
                 with tempfile.TemporaryDirectory() as tmp:
-                    artifacts = RunArtifacts.create(Path(tmp), "protocol1")
+                    artifacts = RunArtifacts.create(Path(tmp), "example_protocol")
                     backend = IncompleteSceneBackend(write_usd=write_usd, write_json=write_json)
                     compiler = SceneCompiler(CapabilityRegistry.load_default(ROOT), backend, ROOT)
 
@@ -366,7 +366,7 @@ class SceneCompilerTests(unittest.TestCase):
 
     def test_failed_preflight_is_persisted_and_prevents_config(self):
         with tempfile.TemporaryDirectory() as tmp:
-            artifacts = RunArtifacts.create(Path(tmp), "protocol1")
+            artifacts = RunArtifacts.create(Path(tmp), "example_protocol")
             backend = FailedPreflightBackend()
             compiler = SceneCompiler(CapabilityRegistry.load_default(ROOT), backend, ROOT)
 
@@ -402,7 +402,7 @@ class SceneCompilerTests(unittest.TestCase):
 
     def test_bypassed_preflight_validation_fails_closed(self):
         with tempfile.TemporaryDirectory() as tmp:
-            artifacts = RunArtifacts.create(Path(tmp), "protocol1")
+            artifacts = RunArtifacts.create(Path(tmp), "example_protocol")
             backend = MaliciousPreflightBackend()
             compiler = SceneCompiler(CapabilityRegistry.load_default(ROOT), backend, ROOT)
 
@@ -415,7 +415,7 @@ class SceneCompilerTests(unittest.TestCase):
 
     def test_backend_mutation_cannot_change_canonical_compiler_snapshot(self):
         with tempfile.TemporaryDirectory() as tmp:
-            artifacts = RunArtifacts.create(Path(tmp), "protocol1")
+            artifacts = RunArtifacts.create(Path(tmp), "example_protocol")
             backend = MutatingSceneBackend()
             compiler = CountingSceneCompiler(CapabilityRegistry.load_default(ROOT), backend, ROOT)
 

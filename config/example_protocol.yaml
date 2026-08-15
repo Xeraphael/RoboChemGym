@@ -1,8 +1,8 @@
-name: Level2_Protocol1
-task_type: Level2_Protocol1
+name: example_protocol
+task_type: example_protocol
 controller_type: plan_executor
 mode: execute
-usd_path: protocols/Level2_Protocol1/scene.usd
+usd_path: protocols/example_protocol/scene.usd
 max_episodes: 1
 
 task:
@@ -48,18 +48,18 @@ collector:
 
 hydra:
   run:
-    dir: outputs/Level2_Protocol1/hydra
+    dir: outputs/example_protocol/hydra
 
 multi_run:
-  run_dir: outputs/Level2_Protocol1
+  run_dir: outputs/example_protocol
 
 agent:
   execution_backend: plan_executor
-  plan_path: protocols/Level2_Protocol1/agent_plan.json
-  validation_report_path: protocols/Level2_Protocol1/validation_report.json
-  scene_preflight_path: protocols/Level2_Protocol1/scene_preflight.json
-  execution_report_path: outputs/Level2_Protocol1/execution_report.json
-  trajectory_path: outputs/Level2_Protocol1/trajectory.json
+  plan_path: protocols/example_protocol/agent_plan.json
+  validation_report_path: protocols/example_protocol/validation_report.json
+  scene_preflight_path: protocols/example_protocol/scene_preflight.json
+  execution_report_path: outputs/example_protocol/execution_report.json
+  trajectory_path: outputs/example_protocol/trajectory.json
   state_anchors:
     ErlenmeyerFlask_Solid1: [grisp_position]
     ErlenmeyerFlask_Liquid1: [grisp_position]

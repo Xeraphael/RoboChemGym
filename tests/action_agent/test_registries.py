@@ -32,13 +32,13 @@ class CapabilityRegistryTests(unittest.TestCase):
             with self.assertRaises(yaml.constructor.ConstructorError):
                 CapabilityRegistry.load_default(root)
 
-    def test_protocol1_assets_resolve_to_existing_files(self):
+    def test_example_protocol_assets_resolve_to_existing_files(self):
         solid = self.registry.assets.resolve("ErlenmeyerFlask", {"content_phase": "solid"})
         liquid = self.registry.assets.resolve("ErlenmeyerFlask", {"content_phase": "liquid"})
         self.assertTrue((ROOT / solid.usd_path).is_file())
         self.assertTrue((ROOT / liquid.usd_path).is_file())
         self.assertEqual(solid.usd_path, liquid.usd_path)
-        self.assertEqual(solid.usd_path, "protocols/Level2_Protocol1/scene.usd")
+        self.assertEqual(solid.usd_path, "protocols/example_protocol/scene.usd")
         self.assertTrue((ROOT / self.registry.assets.get("HeatingPlate").usd_path).is_file())
         self.assertTrue((ROOT / self.registry.assets.get("TargetPlatform").usd_path).is_file())
 

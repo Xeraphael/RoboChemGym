@@ -157,7 +157,7 @@ for prefix in ('isaacsim', 'omni', 'pxr'):
             root = Path(tmp) / "repo"
             output_dir = Path(tmp) / "run"
             output_dir.mkdir()
-            reference_scene = root / "protocols/Level2_Protocol1/scene.usd"
+            reference_scene = root / "protocols/example_protocol/scene.usd"
             reference_scene.parent.mkdir(parents=True)
             reference_scene.write_bytes(b"reference-usd")
             output_usd = output_dir / "scene.usd"
@@ -873,7 +873,7 @@ class SceneGeneratorAdapterTests(unittest.TestCase):
 
         generator_type.assert_called_once_with(
             instruments_dir=str(ROOT / "Instruments"),
-            base_usd_path=str(ROOT / "protocols/Level2_Protocol1/scene.usd"),
+            base_usd_path=str(ROOT / "protocols/example_protocol/scene.usd"),
             scene_info_dir=str(ROOT / "agent/protocol/scene_information"),
             output_dir=str(ROOT / "agent/scene/scenes"),
         )
@@ -1227,7 +1227,7 @@ class SceneInitializerPlanTests(unittest.TestCase):
         self.assertEqual(initializer.instruments_dir, ROOT / "Instruments")
         self.assertEqual(
             initializer.base_usd_path,
-            ROOT / "protocols/Level2_Protocol1/scene.usd",
+            ROOT / "protocols/example_protocol/scene.usd",
         )
         self.assertEqual(initializer.config_dir, ROOT / "config")
 

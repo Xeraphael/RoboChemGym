@@ -38,7 +38,7 @@
 ===ANALYSIS_END===
 
 import ...
-class Protocol1Controller(...):
+class ExampleProtocolController(...):
     ...
 ```
 

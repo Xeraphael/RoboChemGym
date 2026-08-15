@@ -31,7 +31,7 @@ class LegacySceneBackend:
         from agent.scene.optimization.position_optimizer import PositionOptimizer
         from agent.scene.optimization.position_updater import PositionUpdater
 
-        reference_scene = self.root / "protocols/Level2_Protocol1/scene.usd"
+        reference_scene = self.root / "protocols/example_protocol/scene.usd"
         if not reference_scene.is_file():
             raise FileNotFoundError(
                 f"public reference scene does not exist: {reference_scene}"

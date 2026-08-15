@@ -75,7 +75,7 @@ def main() -> None:
     reports_by_seed_set = {}
     for name, seed_set in config.seed_sets.items():
         stage = json.loads(json.dumps(base))
-        stage["name"] = f"Level2_Protocol1_{name}_evaluation"
+        stage["name"] = f"example_protocol_{name}_evaluation"
         stage["mode"] = "evaluate"
         stage["controller_type"] = "policy"
         stage["max_episodes"] = seed_set.episodes

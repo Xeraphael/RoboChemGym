@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "plan_id": "benzoic_acid_dissolution",
+  "plan_id": "example_protocol",
   "metadata": {
     "language_instruction": "Dissolve benzoic acid with sulfuric acid on the heating plate"
   },

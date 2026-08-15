@@ -1,6 +1,6 @@
-base_collection_config: config/collection/level2_protocol1.yaml
-checkpoint_path: outputs/training/Level2_Protocol1_ACT/checkpoints/best.ckpt
-output_dir: outputs/evaluation/Level2_Protocol1_ACT
+base_collection_config: config/collection/example_protocol.yaml
+checkpoint_path: outputs/training/example_protocol_act/checkpoints/best.ckpt
+output_dir: outputs/evaluation/example_protocol_act
 max_steps: 4200
 max_joint_step: 0.05
 video_every_n_episodes: 10

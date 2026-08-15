@@ -1,4 +1,4 @@
-dataset_manifest: outputs/Level2_Protocol1_randomized/dataset/manifest.json
+dataset_manifest: outputs/example_protocol_randomized/dataset/manifest.json
 split_version: "1.0"
 model:
   type: act
@@ -31,7 +31,7 @@ sample_stride: 30
 epochs: 20
 seed: 20260813
 device: cuda:0
-output_dir: outputs/training/Level2_Protocol1_ACT
+output_dir: outputs/training/example_protocol_act
 evaluation_interval: 1
 checkpoint:
   metric: val_loss

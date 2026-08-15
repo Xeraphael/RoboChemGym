@@ -72,10 +72,18 @@ set +a
 
 ## 快速开始
 
-### 1. 生成并执行轨迹
+### 1. 运行用户 Protocol
+
+将需要执行的实验流程写入任意文本文件，然后把文件路径传给 Action Agent：
 
 ```bash
-python agent/main.py --protocol protocols/Level2_Protocol1/protocol.txt
+python agent/main.py --protocol path/to/protocol.txt
+```
+
+例如，可以运行仓库内置的示例：
+
+```bash
+python agent/main.py --protocol protocols/example_protocol/protocol.txt
 ```
 
 执行流程如下：
@@ -103,23 +111,13 @@ python agent/main.py --resume outputs/action_agent/<run-id>
 旧代码生成后端会执行 LLM 生成的 Python，默认处于禁用状态。只有显式传入
 `--allow-unsafe-codegen` 才会启用，并且只应在一次性隔离环境中使用。
 
-### 2. 运行参考 Protocol
+仓库在 [`protocols/example_protocol/`](protocols/example_protocol/) 中提供了
+该示例对应的可复用 Plan、校验产物、配置和场景。
 
-`Level2_Protocol1` 包含六个步骤：抓取固体烧瓶、放到加热板、按下控制按钮、
-抓取液体烧瓶、执行倾倒，以及将液体烧瓶放回原位。
-
-```bash
-./scripts/run_level2_protocol1.sh
-```
-
-该命令使用仅执行模式，保存报告、轨迹和视频，但不写入 HDF5 数据集。可复现
-的 Plan 和场景文件位于
-[`protocols/Level2_Protocol1/`](protocols/Level2_Protocol1/)。
-
-### 3. 采集随机化 Episode
+### 2. 采集随机化 Episode
 
 ```bash
-python collect.py --config config/collection/level2_protocol1.yaml \
+python collect.py --config config/collection/example_protocol.yaml \
   --/rtx/verifyDriverVersion/enabled=false
 ```
 
@@ -127,15 +125,15 @@ v0.1 配置会随机化物体位置、灯光强度与色温，以及已有的工
 episode 的实际随机化结果会写入 manifest。Episode 首先写入临时文件，只有
 成功关闭文件后才会加入数据划分。
 
-### 4. 部署并评测
+### 3. 部署并评测
 
 ```bash
-python evaluate.py --config config/evaluation/level2_protocol1_act.yaml \
+python evaluate.py --config config/evaluation/example_protocol_act.yaml \
   --/rtx/verifyDriverVersion/enabled=false
 ```
 
 评测结果写入
-`outputs/evaluation/Level2_Protocol1_ACT/runs/<run-id>/`，并明确标记为
+`outputs/evaluation/example_protocol_act/runs/<run-id>/`，并明确标记为
 `running`、`completed` 或 `incomplete`。开始策略控制前，系统会检查数据集
 身份、schema、相机顺序与尺寸、状态/动作约定以及夹爪约定是否与 checkpoint
 一致。
@@ -173,7 +171,7 @@ docs/                     项目图片和第三方声明
 
 ## 资产
 
-当前公开源码只包含 `Level2_Protocol1` 参考场景中嵌入的资产：两个锥形瓶
+当前公开源码只包含内置 `example_protocol` 示例场景中嵌入的资产：两个锥形瓶
 变体、加热板和目标平台。Capability registry 中的其他条目仅用于兼容；在
 提供可再分发资产并更新路径之前，Validator 会阻止使用这些资产。
 

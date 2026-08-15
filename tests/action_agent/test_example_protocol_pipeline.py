@@ -14,7 +14,7 @@ from agent.planning.validator import PlanValidator
 
 
 ROOT = Path(__file__).resolve().parents[2]
-FIXTURE_PATH = ROOT / "tests/action_agent/fixtures/protocol1_plan.json"
+FIXTURE_PATH = ROOT / "tests/action_agent/fixtures/example_protocol_plan.json"
 EXPECTED_ACTIONS = [
     ("step_001", "pick", "solid_flask", None),
     ("step_002", "place", "solid_flask", "heating_plate"),
@@ -153,7 +153,7 @@ def load_isolated_controller_factory():
         "PlanExecutorController",
         StubPlanExecutorController,
     )
-    module_name = "factories._protocol1_controller_factory"
+    module_name = "factories._example_protocol_controller_factory"
     spec = importlib.util.spec_from_file_location(
         module_name,
         ROOT / "factories/controller_factory.py",
@@ -172,7 +172,7 @@ def load_isolated_controller_factory():
     return module, StubPlanExecutorController
 
 
-class Protocol1PipelineTests(unittest.TestCase):
+class ExampleProtocolPipelineTests(unittest.TestCase):
     def test_fixture_has_exact_executable_degradation_contract(self):
         plan = load_fixture()
         report = PlanValidator(CapabilityRegistry.load_default(ROOT)).validate(plan)

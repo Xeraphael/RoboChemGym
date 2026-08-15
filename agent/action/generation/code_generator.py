@@ -114,10 +114,10 @@ class CodeGenerator:
         根据类名生成注册名称
         
         Args:
-            class_name: 控制器类名（如 Protocol1Controller）
+            class_name: 控制器类名（如 ExampleProtocolController）
         
         Returns:
-            注册名称（如 protocol1_experiment）
+            注册名称（如 example_protocol_experiment）
         """
         name = class_name.replace('Controller', '')
         name = re.sub(r'(?<!^)(?=[A-Z])', '_', name).lower()
@@ -373,7 +373,7 @@ class CodeGenerator:
         在 controller_factory.py 中注册控制器
         
         Args:
-            class_name: 控制器类名（如 Protocol1Controller）
+            class_name: 控制器类名（如 ExampleProtocolController）
             register_name: 注册名称（如果为 None，自动生成）
         
         Returns:

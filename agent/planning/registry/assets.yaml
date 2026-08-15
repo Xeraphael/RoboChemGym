@@ -23,9 +23,9 @@ assets:
     aliases: [flask, erlenmeyer_flask, 锥形瓶]
     category: container
     variants:
-      default: protocols/Level2_Protocol1/scene.usd
-      solid: protocols/Level2_Protocol1/scene.usd
-      liquid: protocols/Level2_Protocol1/scene.usd
+      default: protocols/example_protocol/scene.usd
+      solid: protocols/example_protocol/scene.usd
+      liquid: protocols/example_protocol/scene.usd
     variant_property: content_phase
     supported_actions: [pick, place, pour, shake]
     required_anchors:
@@ -87,7 +87,7 @@ assets:
   DryingBox:
     aliases: [drying_box, 干燥箱]
     category: door_device
-    usd_path: protocols/Level2_Protocol1/scene.usd
+    usd_path: protocols/example_protocol/scene.usd
     supported_actions: [open, close]
     required_anchors: {open: [handle, RevoluteJoint], close: [handle, RevoluteJoint]}
   ElectricSoilPenetrometer:
@@ -105,7 +105,7 @@ assets:
   HeatingPlate:
     aliases: [heating_plate, 加热板]
     category: device
-    usd_path: protocols/Level2_Protocol1/scene.usd
+    usd_path: protocols/example_protocol/scene.usd
     supported_actions: [place_target, press]
     required_anchors: {place_target: [place_position], press: [press_position]}
   InfraredSpectrophotometer:
@@ -135,5 +135,5 @@ assets:
   TargetPlatform:
     aliases: [target_platform, target_plat, 目标平台]
     category: placement_target
-    usd_path: protocols/Level2_Protocol1/scene.usd
+    usd_path: protocols/example_protocol/scene.usd
     supported_actions: [place_target]

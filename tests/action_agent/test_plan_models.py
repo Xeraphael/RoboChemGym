@@ -15,7 +15,7 @@ from agent.planning.models import (
 def make_plan() -> AgentPlan:
     return AgentPlan(
         schema_version="1.0",
-        plan_id="protocol1",
+        plan_id="example_protocol",
         scene=ScenePlan(objects=[
             SceneObject(
                 id="solid_flask",

@@ -18,4 +18,4 @@ redistributing NVIDIA's implementation.
 
 Legacy lab scenes and instrument packages containing non-redistributable NVIDIA
 MDL sources are intentionally excluded. The public capability registry therefore
-supports only assets embedded in the checked-in `Level2_Protocol1` scene.
+supports only assets embedded in the bundled `example_protocol` scene.

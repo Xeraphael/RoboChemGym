@@ -37,32 +37,32 @@ class RunArtifactsTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             artifacts = RunArtifacts.create(
                 Path(tmp),
-                "protocol1",
+                "example_protocol",
                 now=datetime(2026, 7, 17, 15, 30, 0),
             )
             plan = make_plan()
             artifacts.write_protocol("test protocol")
             artifacts.write_plan(plan)
             artifacts.write_legacy_exports(plan)
-            self.assertEqual(artifacts.run_dir.name, "20260717_153000_protocol1")
-            self.assertEqual(json.loads(artifacts.plan_path.read_text())["plan_id"], "protocol1")
+            self.assertEqual(artifacts.run_dir.name, "20260717_153000_example_protocol")
+            self.assertEqual(json.loads(artifacts.plan_path.read_text())["plan_id"], "example_protocol")
             self.assertIn("ErlenmeyerFlask_Solid1", artifacts.legacy_equipment_path.read_text())
             self.assertIn("pick solid_flask", artifacts.legacy_actions_path.read_text())
 
     def test_same_second_runs_receive_distinct_directories(self):
         with tempfile.TemporaryDirectory() as tmp:
             now = datetime(2026, 7, 17, 15, 30, 0)
-            first = RunArtifacts.create(Path(tmp), "protocol1", now=now)
-            second = RunArtifacts.create(Path(tmp), "protocol1", now=now)
+            first = RunArtifacts.create(Path(tmp), "example_protocol", now=now)
+            second = RunArtifacts.create(Path(tmp), "example_protocol", now=now)
             self.assertNotEqual(first.run_dir, second.run_dir)
-            self.assertEqual(second.run_dir.name, "20260717_153000_protocol1_01")
+            self.assertEqual(second.run_dir.name, "20260717_153000_example_protocol_01")
 
     def test_concurrent_same_second_runs_receive_unique_directories(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
             now = datetime(2026, 7, 17, 15, 30, 0)
             workers = 8
-            base_name = "20260717_153000_protocol1"
+            base_name = "20260717_153000_example_protocol"
             exists_barrier = Barrier(workers)
             original_exists = Path.exists
 
@@ -73,7 +73,7 @@ class RunArtifactsTests(unittest.TestCase):
                 return original_exists(path)
 
             def create_artifacts(_):
-                return RunArtifacts.create(root, "protocol1", now=now)
+                return RunArtifacts.create(root, "example_protocol", now=now)
 
             with patch.object(Path, "exists", synchronized_exists):
                 with ThreadPoolExecutor(max_workers=workers) as executor:
@@ -86,7 +86,7 @@ class RunArtifactsTests(unittest.TestCase):
     def test_invalid_plan_ids_are_rejected(self):
         invalid_plan_ids = [
             "",
-            "Protocol1",
+            "ExampleProtocol",
             "protocol-1",
             "protocol/1",
             "..",
@@ -124,7 +124,7 @@ class RunArtifactsTests(unittest.TestCase):
                 os.chdir(workspace)
                 artifacts = RunArtifacts.create(
                     Path("runs"),
-                    "protocol1",
+                    "example_protocol",
                     now=datetime(2026, 7, 17, 15, 30, 0),
                 )
                 os.chdir(other_cwd)
@@ -134,7 +134,7 @@ class RunArtifactsTests(unittest.TestCase):
             self.assertTrue(artifacts.run_dir.is_absolute())
             self.assertEqual(
                 artifacts.run_dir,
-                workspace / "runs" / "20260717_153000_protocol1",
+                workspace / "runs" / "20260717_153000_example_protocol",
             )
             self.assertEqual(
                 (artifacts.run_dir / "input_protocol.txt").read_text(),
@@ -144,7 +144,7 @@ class RunArtifactsTests(unittest.TestCase):
     def test_write_json_rejects_external_absolute_path(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp) / "runs"
-            artifacts = RunArtifacts.create(root, "protocol1")
+            artifacts = RunArtifacts.create(root, "example_protocol")
             external_path = Path(tmp) / "external.json"
             with self.assertRaises(ValueError):
                 artifacts.write_json(external_path, {"status": "invalid"})
@@ -153,7 +153,7 @@ class RunArtifactsTests(unittest.TestCase):
     def test_write_json_rejects_relative_escape(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp) / "runs"
-            artifacts = RunArtifacts.create(root, "protocol1")
+            artifacts = RunArtifacts.create(root, "example_protocol")
             escaped_path = root / "escaped.json"
             original_cwd = Path.cwd()
             try:
@@ -167,7 +167,7 @@ class RunArtifactsTests(unittest.TestCase):
     def test_write_json_rejects_symlink_escape(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp) / "runs"
-            artifacts = RunArtifacts.create(root, "protocol1")
+            artifacts = RunArtifacts.create(root, "example_protocol")
             external_dir = Path(tmp) / "external"
             external_dir.mkdir()
             (artifacts.run_dir / "external").symlink_to(
@@ -188,7 +188,7 @@ class RunArtifactsTests(unittest.TestCase):
 
     def test_write_json_accepts_paths_inside_run_directory(self):
         with tempfile.TemporaryDirectory() as tmp:
-            artifacts = RunArtifacts.create(Path(tmp) / "runs", "protocol1")
+            artifacts = RunArtifacts.create(Path(tmp) / "runs", "example_protocol")
             artifacts.write_json(artifacts.validation_path, {"canonical": True})
             original_cwd = Path.cwd()
             try:

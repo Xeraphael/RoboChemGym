@@ -3,8 +3,8 @@ import numpy as np
 from .all_task import AllTask
 
 
-class Level2Protocol1Task(AllTask):
-    """Six-step protocol scene with a return target at the source location."""
+class ExampleProtocolTask(AllTask):
+    """Bundled example scene with a return target at the source location."""
 
     def reset(self):
         super().reset()
