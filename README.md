@@ -7,7 +7,7 @@ Manipulation**
 
 RoboChemGym turns natural-language chemistry protocols into executable robot
 trajectories, scales those trajectories through lab-specific randomization, and
-provides training and Isaac Sim evaluation entry points. It is built on the
+provides Isaac Sim policy deployment and evaluation entry points. It is built on the
 LabUtopia simulation environment.
 
 This repository is the first source release. It focuses on complete code paths
@@ -20,9 +20,9 @@ RoboChemGym contains three connected modules:
 1. **Protocol-driven trajectory generation** converts text into a structured
    Agent Plan, validates actions and assets, builds the scene, executes in Isaac
    Sim, and records reports and sampled videos.
-2. **Randomized data collection and training** varies supported scene factors,
-   stores successful episodes through an atomic manifest workflow, and trains an
-   ACT policy from deterministic dataset splits.
+2. **Randomized data collection** varies supported scene factors and stores
+   successful episodes through an atomic manifest workflow with deterministic
+   dataset splits.
 3. **Policy deployment and evaluation** checks checkpoint/environment
    compatibility, runs fixed-seed Isaac evaluation, and writes structured task
    and action-level metrics.
@@ -32,7 +32,8 @@ RoboChemGym contains three connected modules:
 | Method module | Status |
 |---|---|
 | Protocol-driven trajectory generation | Released |
-| Randomized data collection and policy training | Released |
+| Randomized data collection | Released |
+| Policy training | **Coming soon** |
 | Policy deployment and evaluation | Released |
 | Level 1-3 benchmark manifests (20 Protocols) | **Coming soon** |
 
@@ -132,18 +133,9 @@ python collect.py --config config/collection/level2_protocol1.yaml \
 The v0.1 configuration randomizes object position, light intensity and color
 temperature, and existing work-surface materials. Resolved values are recorded
 in the episode manifest. Episodes are first written as partial files and enter a
-training split only after a successful close.
+dataset split only after a successful close.
 
-### 4. Train ACT
-
-```bash
-python train.py --config config/training/level2_protocol1_act.yaml
-```
-
-The repository does not include HDF5 episodes, so collection must complete
-before training.
-
-### 5. Deploy and evaluate
+### 4. Deploy and evaluate
 
 ```bash
 python evaluate.py --config config/evaluation/level2_protocol1_act.yaml \
