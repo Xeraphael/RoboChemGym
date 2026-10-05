@@ -1,0 +1,53 @@
+---
+schema_version: '1.0'
+protocol_id: protocol_01
+title: Heat Plate Placement
+status: planned
+executable: false
+source:
+  paper:
+    title: 'RoboChemGym: A Protocol-Driven Generative Simulation Framework for Long-Horizon
+      Chemical Manipulation'
+    arxiv: https://arxiv.org/abs/2610.02708
+    identifier: arXiv:2610.02708
+  description: Place dichloromethane (5.0 g, 0.041 mol) from the narrow-mouth bottle
+    on the heating plate. Press the heating plate button to start heating. Place the
+    narrow-mouth bottle back in its position.
+  atomic_action_sequence: Pick-Place-Press
+assets:
+- id: HeatingPlate
+  display_name: Heating Plate
+  role: target_device
+  registry_status: registered
+- id: NarrowMouthBottle
+  display_name: Narrow-Mouth Bottle (Liquid)
+  role: source_container
+  registry_status: pending_asset
+materials:
+- name: dichloromethane
+  amount: 5.0
+  unit: g
+  amount_mol: 0.041
+  phase: liquid
+  source_asset: NarrowMouthBottle
+atomic_actions:
+- pick
+- place
+- press
+registered_atomic_actions:
+- pick
+- place
+- press
+generation:
+  mode: manifest_only
+  asset_status: pending
+  action_status: ready
+  pending_assets:
+  - NarrowMouthBottle
+  pending_capabilities: []
+  open_questions:
+  - A dedicated NarrowMouthBottle asset and placement anchors are still required.
+  notes:
+  - This file describes a protocol planned for future scene and trajectory generation.
+  - It is intentionally non-executable until all blocking assets, actions, anchors,
+    and semantics are resolved.

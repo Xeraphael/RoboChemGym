@@ -1,0 +1,49 @@
+---
+schema_version: '1.0'
+protocol_id: protocol_08
+title: Shaker Mixing
+status: planned
+executable: false
+source:
+  paper:
+    title: 'RoboChemGym: A Protocol-Driven Generative Simulation Framework for Long-Horizon
+      Chemical Manipulation'
+    arxiv: https://arxiv.org/abs/2610.02708
+    identifier: arXiv:2610.02708
+  description: Place the Erlenmeyer flask containing the reaction solution on the
+    shaker, press the shaker button, and start shaking to fully mix the solution.
+  atomic_action_sequence: Pick-Shake-Place
+assets:
+- id: ErlenmeyerFlask
+  display_name: Erlenmeyer Flask
+  role: source_container
+  registry_status: registered
+- id: Oscillator
+  display_name: Oscillator
+  role: target_device
+  registry_status: registered
+materials:
+- name: reaction solution
+  phase: liquid
+  source_asset: ErlenmeyerFlask
+atomic_actions:
+- pick
+- shake
+- place
+registered_atomic_actions:
+- pick
+- shake
+- place
+generation:
+  mode: manifest_only
+  asset_status: ready
+  action_status: ready
+  pending_assets: []
+  pending_capabilities: []
+  open_questions:
+  - The problem statement includes a shaker-button press, while the supplied atomic
+    sequence omits an explicit Press token.
+  notes:
+  - This file describes a protocol planned for future scene and trajectory generation.
+  - It is intentionally non-executable until all blocking assets, actions, anchors,
+    and semantics are resolved.

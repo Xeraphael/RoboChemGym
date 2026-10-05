@@ -1,0 +1,63 @@
+---
+schema_version: '1.0'
+protocol_id: protocol_13
+title: Carbonate Quench and pH Adjust
+status: planned
+executable: false
+source:
+  paper:
+    title: 'RoboChemGym: A Protocol-Driven Generative Simulation Framework for Long-Horizon
+      Chemical Manipulation'
+    arxiv: https://arxiv.org/abs/2610.02708
+    identifier: arXiv:2610.02708
+  description: Pour the reaction solution (0.5 mL) into a beaker containing 50 mL
+    of saturated sodium carbonate solution. Place the beaker on the pH meter and press
+    the button to measure the pH value, ensuring the pH is adjusted to 7–8. Shake
+    the solution and press again to finalize the pH value.
+  atomic_action_sequence: Pick-Place-Press-Pick-Shake-Place-Press
+assets:
+- id: Beaker
+  display_name: Beaker
+  role: source_and_target_container
+  registry_status: registered
+- id: pHMeter
+  display_name: pH Meter
+  role: target_device
+  registry_status: registered
+materials:
+- name: reaction solution
+  amount: 0.5
+  unit: mL
+  phase: liquid
+- name: saturated sodium carbonate solution
+  amount: 50.0
+  unit: mL
+  phase: liquid
+  source_asset: Beaker
+  notes: 'Target pH: 7–8'
+atomic_actions:
+- pick
+- place
+- press
+- pick
+- shake
+- place
+- press
+registered_atomic_actions:
+- pick
+- place
+- press
+- shake
+generation:
+  mode: manifest_only
+  asset_status: ready
+  action_status: ready
+  pending_assets: []
+  pending_capabilities: []
+  open_questions:
+  - Closed-loop pH adjustment requires an observable pH reading and a control policy;
+    the current registry only provides placement, pressing, and shaking.
+  notes:
+  - This file describes a protocol planned for future scene and trajectory generation.
+  - It is intentionally non-executable until all blocking assets, actions, anchors,
+    and semantics are resolved.

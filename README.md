@@ -7,6 +7,14 @@ Manipulation**
 
 ![RoboChemGym overview](docs/images/robochemgym-teaser.png)
 
+<p align="center">
+  <a href="https://arxiv.org/abs/2610.02708">
+    <img src="https://img.shields.io/badge/arXiv-2610.02708-b31b1b.svg?style=for-the-badge&logo=arxiv&logoColor=white" alt="Read the RoboChemGym paper on arXiv">
+  </a>
+</p>
+
+**Paper:** [RoboChemGym: A Protocol-Driven Generative Simulation Framework for Long-Horizon Chemical Manipulation](https://arxiv.org/abs/2610.02708) · [arXiv:2610.02708](https://arxiv.org/abs/2610.02708)
+
 RoboChemGym turns natural-language chemistry protocols into executable robot
 trajectories, scales those trajectories through lab-specific randomization, and
 provides Isaac Sim policy deployment and evaluation entry points. It is built on the
@@ -123,6 +131,12 @@ The repository includes the corresponding reusable Plan, validation artifacts,
 configuration, and scene under
 [`protocols/example_protocol/`](protocols/example_protocol/).
 
+The 20 protocols described in the paper are tracked as generation-ready
+manifests under [`config/protocols/`](config/protocols/). These YAML files keep
+the source descriptions, materials, assets, atomic action sequences, and open
+questions while the missing assets and capabilities are being prepared. See the
+[protocol manifest index](config/protocols/README.md) for the readiness status.
+
 ### 2. Collect randomized episodes
 
 ```bash
@@ -189,8 +203,14 @@ Isaac Sim and its runtime assets must still be installed separately.
 
 ## Citation
 
-The paper citation will be added after publication. For software metadata, see
-[`CITATION.cff`](CITATION.cff).
+If you use the research results, please cite the paper:
+
+```text
+RoboChemGym: A Protocol-Driven Generative Simulation Framework for Long-Horizon Chemical Manipulation.
+arXiv:2610.02708, 2026.
+```
+
+For software metadata, see [`CITATION.cff`](CITATION.cff).
 
 ## License
 

@@ -6,6 +6,14 @@
 
 ![RoboChemGym 概览](docs/images/robochemgym-teaser.png)
 
+<p align="center">
+  <a href="https://arxiv.org/abs/2610.02708">
+    <img src="https://img.shields.io/badge/arXiv-2610.02708-b31b1b.svg?style=for-the-badge&logo=arxiv&logoColor=white" alt="在 arXiv 阅读 RoboChemGym 论文">
+  </a>
+</p>
+
+**论文：** [RoboChemGym：面向长程化学操作的协议驱动生成式仿真框架](https://arxiv.org/abs/2610.02708) · [arXiv:2610.02708](https://arxiv.org/abs/2610.02708)
+
 RoboChemGym 将自然语言化学实验协议转换为可执行的机器人轨迹，通过面向
 实验室场景的随机化扩展轨迹数据，并提供 Isaac Sim 中的策略部署与评测
 入口。本项目构建于 LabUtopia 仿真环境之上。
@@ -114,6 +122,11 @@ python agent/main.py --resume outputs/action_agent/<run-id>
 仓库在 [`protocols/example_protocol/`](protocols/example_protocol/) 中提供了
 该示例对应的可复用 Plan、校验产物、配置和场景。
 
+论文中的 20 个 Protocol 已整理为待生成配置，位于
+[`config/protocols/`](config/protocols/)。这些 YAML 会保留原始描述、物料、
+资产、原子动作序列和待解决问题，并明确标记当前尚未可执行的部分。详见
+[Protocol 配置索引](config/protocols/README.md)。
+
 ### 2. 采集随机化 Episode
 
 ```bash
@@ -178,7 +191,14 @@ Isaac Sim 及其运行时资产仍需单独安装。
 
 ## 引用
 
-论文发表后将补充正式引用信息。软件元数据见 [`CITATION.cff`](CITATION.cff)。
+如果使用本项目的研究成果，请引用论文：
+
+```text
+RoboChemGym: A Protocol-Driven Generative Simulation Framework for Long-Horizon Chemical Manipulation.
+arXiv:2610.02708, 2026.
+```
+
+软件元数据见 [`CITATION.cff`](CITATION.cff)。
 
 ## 许可证
 

@@ -1,0 +1,65 @@
+---
+schema_version: '1.0'
+protocol_id: protocol_17
+title: Bicarbonate Neutralization Shake
+status: planned
+executable: false
+source:
+  paper:
+    title: 'RoboChemGym: A Protocol-Driven Generative Simulation Framework for Long-Horizon
+      Chemical Manipulation'
+    arxiv: https://arxiv.org/abs/2610.02708
+    identifier: arXiv:2610.02708
+  description: Pour the reaction solution (0.5 mL) into a beaker containing saturated
+    sodium bicarbonate solution, grasp the beaker containing the mixture and shake
+    it to fully mix and neutralize the reaction solution with the sodium bicarbonate
+    solution, then return the beaker to its original position.
+  atomic_action_sequence: Pick-Shake-Pour-Place-Pick-Shake-Place
+assets:
+- id: Beaker
+  display_name: Beaker
+  role: target_container
+  registry_status: registered
+- id: NarrowMouthBottle
+  display_name: Narrow-Mouth Bottle (Liquid)
+  role: listed_source_container
+  registry_status: pending_asset
+materials:
+- name: reaction solution
+  amount: 0.5
+  unit: mL
+  phase: liquid
+  source_asset: NarrowMouthBottle
+- name: saturated sodium bicarbonate solution
+  phase: liquid
+  source_asset: Beaker
+atomic_actions:
+- pick
+- shake
+- pour
+- place
+- pick
+- shake
+- place
+registered_atomic_actions:
+- pick
+- shake
+- pour
+- place
+generation:
+  mode: manifest_only
+  asset_status: pending
+  action_status: ready
+  pending_assets:
+  - NarrowMouthBottle
+  pending_capabilities: []
+  open_questions:
+  - The source vessel for the reaction solution and the container holding saturated
+    sodium bicarbonate are not fully specified.
+  - The supplied sequence shakes before the pour, while the prose describes pouring
+    before neutralization shaking.
+  - A dedicated NarrowMouthBottle asset is still required.
+  notes:
+  - This file describes a protocol planned for future scene and trajectory generation.
+  - It is intentionally non-executable until all blocking assets, actions, anchors,
+    and semantics are resolved.

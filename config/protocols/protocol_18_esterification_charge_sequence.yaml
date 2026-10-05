@@ -1,0 +1,95 @@
+---
+schema_version: '1.0'
+protocol_id: protocol_18
+title: Esterification Charge Sequence
+status: planned
+executable: false
+source:
+  paper:
+    title: 'RoboChemGym: A Protocol-Driven Generative Simulation Framework for Long-Horizon
+      Chemical Manipulation'
+    arxiv: https://arxiv.org/abs/2610.02708
+    identifier: arXiv:2610.02708
+  description: Use an electronic balance to weigh benzoic acid (5.0 g, 0.041 mol)
+    from the wide-mouth bottle, then place the Erlenmeyer flask containing benzoic
+    acid on the heating plate, press the button to start stirring, add methanol (20
+    mL, 0.49 mol) from the narrow-mouth bottle to the benzoic acid, and finally slowly
+    pour concentrated sulfuric acid (0.5 mL, catalyst and dehydrating agent) into
+    the benzoic acid.
+  atomic_action_sequence: Pick-Weigh-Pick-Place-Pick-Pour-Place-Press-Shake-Pick-Place
+assets:
+- id: ElectronicScale
+  display_name: Electronic Scale
+  role: target_device
+  registry_status: registered
+- id: ErlenmeyerFlask
+  display_name: Erlenmeyer Flask
+  role: reaction_container
+  registry_status: registered
+- id: HeatingPlate
+  display_name: Heating Plate
+  role: target_device
+  registry_status: registered
+- id: WideMouthBottle
+  display_name: Wide-Mouth Bottle (Solid)
+  role: source_container
+  registry_status: pending_asset
+- id: NarrowMouthBottle
+  display_name: Narrow-Mouth Bottle (Liquid)
+  role: source_container
+  registry_status: pending_asset
+materials:
+- name: benzoic acid
+  amount: 5.0
+  unit: g
+  amount_mol: 0.041
+  phase: solid
+  source_asset: WideMouthBottle
+- name: methanol
+  amount: 20.0
+  unit: mL
+  amount_mol: 0.49
+  phase: liquid
+  source_asset: NarrowMouthBottle
+- name: concentrated sulfuric acid
+  amount: 0.5
+  unit: mL
+  phase: liquid
+  source_asset: NarrowMouthBottle
+atomic_actions:
+- pick
+- weigh
+- pick
+- place
+- pick
+- pour
+- place
+- press
+- shake
+- pick
+- place
+registered_atomic_actions:
+- pick
+- place
+- pour
+- press
+- shake
+generation:
+  mode: manifest_only
+  asset_status: pending
+  action_status: pending
+  pending_assets:
+  - WideMouthBottle
+  - NarrowMouthBottle
+  pending_capabilities:
+  - weigh
+  open_questions:
+  - The Assets Used line provides one Narrow-Mouth Bottle for both methanol and sulfuric
+    acid; confirm whether two source containers or staged refills are intended.
+  - The registry has no explicit stir action; the supplied sequence uses Shake as
+    the closest available manipulation.
+  - Dedicated NarrowMouthBottle and WideMouthBottle assets are still required.
+  notes:
+  - This file describes a protocol planned for future scene and trajectory generation.
+  - It is intentionally non-executable until all blocking assets, actions, anchors,
+    and semantics are resolved.

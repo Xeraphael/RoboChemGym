@@ -1,0 +1,47 @@
+---
+schema_version: '1.0'
+protocol_id: protocol_07
+title: Pour into Suction Flask
+status: planned
+executable: false
+source:
+  paper:
+    title: 'RoboChemGym: A Protocol-Driven Generative Simulation Framework for Long-Horizon
+      Chemical Manipulation'
+    arxiv: https://arxiv.org/abs/2610.02708
+    identifier: arXiv:2610.02708
+  description: Grasp the beaker containing the reaction solution and slowly pour the
+    solution into the suction flask.
+  atomic_action_sequence: Pick-Pour-Place
+assets:
+- id: Beaker
+  display_name: Beaker
+  role: source_container
+  registry_status: registered
+- id: SuctionFlask
+  display_name: Suction Flask
+  role: target_container
+  registry_status: registered
+materials:
+- name: reaction solution
+  phase: liquid
+  source_asset: Beaker
+atomic_actions:
+- pick
+- pour
+- place
+registered_atomic_actions:
+- pick
+- pour
+- place
+generation:
+  mode: manifest_only
+  asset_status: ready
+  action_status: ready
+  pending_assets: []
+  pending_capabilities: []
+  open_questions: []
+  notes:
+  - This file describes a protocol planned for future scene and trajectory generation.
+  - It is intentionally non-executable until all blocking assets, actions, anchors,
+    and semantics are resolved.

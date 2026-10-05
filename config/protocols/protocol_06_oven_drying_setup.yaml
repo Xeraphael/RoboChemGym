@@ -1,0 +1,46 @@
+---
+schema_version: '1.0'
+protocol_id: protocol_06
+title: Oven Drying Setup
+status: planned
+executable: false
+source:
+  paper:
+    title: 'RoboChemGym: A Protocol-Driven Generative Simulation Framework for Long-Horizon
+      Chemical Manipulation'
+    arxiv: https://arxiv.org/abs/2610.02708
+    identifier: arXiv:2610.02708
+  description: Open the drying oven and place the beaker inside.
+  atomic_action_sequence: Open-Pick-Place
+assets:
+- id: Beaker
+  display_name: Beaker
+  role: source_container
+  registry_status: registered
+- id: DryingBox
+  display_name: Drying Box
+  role: target_device
+  registry_status: registered
+materials:
+- name: beaker contents
+atomic_actions:
+- open
+- pick
+- place
+registered_atomic_actions:
+- open
+- pick
+- place
+generation:
+  mode: manifest_only
+  asset_status: ready
+  action_status: ready
+  pending_assets: []
+  pending_capabilities: []
+  open_questions:
+  - The source description does not state whether the oven door should be closed after
+    placement.
+  notes:
+  - This file describes a protocol planned for future scene and trajectory generation.
+  - It is intentionally non-executable until all blocking assets, actions, anchors,
+    and semantics are resolved.

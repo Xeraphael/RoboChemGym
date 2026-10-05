@@ -1,0 +1,45 @@
+---
+schema_version: '1.0'
+protocol_id: protocol_05
+title: Gently Shake Erlenmeyer
+status: planned
+executable: false
+source:
+  paper:
+    title: 'RoboChemGym: A Protocol-Driven Generative Simulation Framework for Long-Horizon
+      Chemical Manipulation'
+    arxiv: https://arxiv.org/abs/2610.02708
+    identifier: arXiv:2610.02708
+  description: Take the Erlenmeyer flask containing the reaction solution (0.5 mL)
+    and gently shake it.
+  atomic_action_sequence: Pick-Shake-Place
+assets:
+- id: ErlenmeyerFlask
+  display_name: Erlenmeyer Flask
+  role: source_container
+  registry_status: registered
+materials:
+- name: reaction solution
+  amount: 0.5
+  unit: mL
+  phase: liquid
+  source_asset: ErlenmeyerFlask
+atomic_actions:
+- pick
+- shake
+- place
+registered_atomic_actions:
+- pick
+- shake
+- place
+generation:
+  mode: manifest_only
+  asset_status: ready
+  action_status: ready
+  pending_assets: []
+  pending_capabilities: []
+  open_questions: []
+  notes:
+  - This file describes a protocol planned for future scene and trajectory generation.
+  - It is intentionally non-executable until all blocking assets, actions, anchors,
+    and semantics are resolved.

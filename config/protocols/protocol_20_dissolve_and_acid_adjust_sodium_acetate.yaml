@@ -1,0 +1,98 @@
+---
+schema_version: '1.0'
+protocol_id: protocol_20
+title: Dissolve and Acid-Adjust Sodium Acetate
+status: planned
+executable: false
+source:
+  paper:
+    title: 'RoboChemGym: A Protocol-Driven Generative Simulation Framework for Long-Horizon
+      Chemical Manipulation'
+    arxiv: https://arxiv.org/abs/2610.02708
+    identifier: arXiv:2610.02708
+  description: Use an electronic balance to weigh sodium acetate (4.1 g, 0.05 mol)
+    from the wide-mouth bottle, transfer the weighed sodium acetate into a dry Erlenmeyer
+    flask, then add anhydrous ethanol (25 mL, 0.43 mol) from the narrow-mouth bottle
+    to the flask. Place the flask on a heating magnetic stirrer, press the button
+    to start stirring and heating to gradually dissolve the solid. After the solution
+    becomes clear, slowly add concentrated hydrochloric acid (approximately 0.5 mL)
+    to adjust the reaction environment, and continue stirring at constant temperature
+    for 10 min.
+  atomic_action_sequence: Pick-Place-Press-Pick-Shake-Pour-Place-Pick-Pour-Place-Press
+assets:
+- id: ElectronicScale
+  display_name: Electronic Scale
+  role: target_device
+  registry_status: registered
+- id: ErlenmeyerFlask
+  display_name: Erlenmeyer Flask
+  role: reaction_container
+  registry_status: registered
+- id: HeatingPlate
+  display_name: Heating Plate
+  role: target_device
+  registry_status: registered
+- id: WideMouthBottle
+  display_name: Wide-Mouth Bottle (Solid)
+  role: source_container
+  registry_status: pending_asset
+- id: NarrowMouthBottle
+  display_name: Narrow-Mouth Bottle (Liquid)
+  role: source_container
+  registry_status: pending_asset
+materials:
+- name: sodium acetate
+  amount: 4.1
+  unit: g
+  amount_mol: 0.05
+  phase: solid
+  source_asset: WideMouthBottle
+- name: anhydrous ethanol
+  amount: 25.0
+  unit: mL
+  amount_mol: 0.43
+  phase: liquid
+  source_asset: NarrowMouthBottle
+- name: concentrated hydrochloric acid
+  amount: 0.5
+  unit: mL
+  phase: liquid
+  source_asset: NarrowMouthBottle
+  notes: Approximate volume
+atomic_actions:
+- pick
+- place
+- press
+- pick
+- shake
+- pour
+- place
+- pick
+- pour
+- place
+- press
+registered_atomic_actions:
+- pick
+- place
+- press
+- shake
+- pour
+generation:
+  mode: manifest_only
+  asset_status: pending
+  action_status: pending
+  pending_assets:
+  - WideMouthBottle
+  - NarrowMouthBottle
+  pending_capabilities:
+  - weigh
+  open_questions:
+  - The Assets Used line provides one Narrow-Mouth Bottle for both ethanol and hydrochloric
+    acid; confirm whether two source containers or staged refills are intended.
+  - The registry has no explicit magnetic-stirrer, dissolution-observation, constant-temperature,
+    or timed-stirring primitives; define the intended approximation.
+  - Dedicated NarrowMouthBottle and WideMouthBottle assets are still required.
+  notes:
+  - This file describes a protocol planned for future scene and trajectory generation.
+  - It is intentionally non-executable until all blocking assets, actions, anchors,
+    and semantics are resolved.

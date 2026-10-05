@@ -1,0 +1,73 @@
+---
+schema_version: '1.0'
+protocol_id: protocol_10
+title: Stir and Add Sulfuric Acid
+status: planned
+executable: false
+source:
+  paper:
+    title: 'RoboChemGym: A Protocol-Driven Generative Simulation Framework for Long-Horizon
+      Chemical Manipulation'
+    arxiv: https://arxiv.org/abs/2610.02708
+    identifier: arXiv:2610.02708
+  description: Place benzoic acid (5.0 g, 0.041 mol) from the wide-mouth bottle on
+    the heating plate and press the button to start stirring until the benzoic acid
+    partially dissolves. Slowly pour concentrated sulfuric acid (0.5 mL) from an Erlenmeyer
+    flask into the benzoic acid while stirring to avoid local overheating. Place the
+    Erlenmeyer flask containing concentrated sulfuric acid back in its original position.
+  atomic_action_sequence: Pick-Place-Press-Pick-Pour-Place-Press
+assets:
+- id: ErlenmeyerFlask
+  display_name: Erlenmeyer Flask
+  role: source_container
+  registry_status: registered
+- id: HeatingPlate
+  display_name: Heating Plate
+  role: target_device
+  registry_status: registered
+- id: NarrowMouthBottle
+  display_name: Narrow-Mouth Bottle (Liquid)
+  role: listed_source_container
+  registry_status: pending_asset
+materials:
+- name: benzoic acid
+  amount: 5.0
+  unit: g
+  amount_mol: 0.041
+  phase: solid
+  source_asset: WideMouthBottle
+- name: concentrated sulfuric acid
+  amount: 0.5
+  unit: mL
+  phase: liquid
+  source_asset: ErlenmeyerFlask
+atomic_actions:
+- pick
+- place
+- press
+- pick
+- pour
+- place
+- press
+registered_atomic_actions:
+- pick
+- place
+- press
+- pour
+generation:
+  mode: manifest_only
+  asset_status: pending
+  action_status: ready
+  pending_assets:
+  - WideMouthBottle
+  pending_capabilities: []
+  open_questions:
+  - The problem names a Wide-Mouth Bottle for benzoic acid, but the Assets Used line
+    lists a Narrow-Mouth Bottle and an Erlenmeyer Flask; resolve the source-vessel
+    mapping.
+  - The registry has no explicit stir action; generation must document how stirring
+    is approximated by the available actions.
+  notes:
+  - This file describes a protocol planned for future scene and trajectory generation.
+  - It is intentionally non-executable until all blocking assets, actions, anchors,
+    and semantics are resolved.

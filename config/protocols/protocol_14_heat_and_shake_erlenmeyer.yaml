@@ -1,0 +1,56 @@
+---
+schema_version: '1.0'
+protocol_id: protocol_14
+title: Heat and Shake Erlenmeyer
+status: planned
+executable: false
+source:
+  paper:
+    title: 'RoboChemGym: A Protocol-Driven Generative Simulation Framework for Long-Horizon
+      Chemical Manipulation'
+    arxiv: https://arxiv.org/abs/2610.02708
+    identifier: arXiv:2610.02708
+  description: Place the Erlenmeyer flask containing the reaction solution (20 mL,
+    0.49 mol) on the heating plate, press the button to start the heating plate, and
+    grasp the flask and gently shake it.
+  atomic_action_sequence: Pick-Place-Press-Pick-Shake-Place-Press
+assets:
+- id: ErlenmeyerFlask
+  display_name: Erlenmeyer Flask
+  role: source_container
+  registry_status: registered
+- id: HeatingPlate
+  display_name: Heating Plate
+  role: target_device
+  registry_status: registered
+materials:
+- name: reaction solution
+  amount: 20.0
+  unit: mL
+  amount_mol: 0.49
+  phase: liquid
+  source_asset: ErlenmeyerFlask
+atomic_actions:
+- pick
+- place
+- press
+- pick
+- shake
+- place
+- press
+registered_atomic_actions:
+- pick
+- place
+- press
+- shake
+generation:
+  mode: manifest_only
+  asset_status: ready
+  action_status: ready
+  pending_assets: []
+  pending_capabilities: []
+  open_questions: []
+  notes:
+  - This file describes a protocol planned for future scene and trajectory generation.
+  - It is intentionally non-executable until all blocking assets, actions, anchors,
+    and semantics are resolved.

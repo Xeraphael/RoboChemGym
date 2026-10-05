@@ -1,0 +1,167 @@
+---
+schema_version: '1.0'
+manifest_type: planned_protocol_index
+status: planned
+executable: false
+paper:
+  title: 'RoboChemGym: A Protocol-Driven Generative Simulation Framework for Long-Horizon
+    Chemical Manipulation'
+  arxiv: https://arxiv.org/abs/2610.02708
+  identifier: arXiv:2610.02708
+protocol_count: 20
+capability_registry:
+  registered_actions:
+  - pick
+  - place
+  - pour
+  - press
+  - press_z
+  - shake
+  - open
+  - close
+  pending_assets:
+  - NarrowMouthBottle
+  - WideMouthBottle
+  pending_actions:
+  - weigh
+protocols:
+- protocol_id: protocol_01
+  title: Heat Plate Placement
+  file: protocol_01_heat_plate_placement.yaml
+  status: planned
+  executable: false
+  asset_status: pending
+  action_status: ready
+- protocol_id: protocol_02
+  title: Weigh p-Toluidine
+  file: protocol_02_weigh_p_toluidine.yaml
+  status: planned
+  executable: false
+  asset_status: pending
+  action_status: pending
+- protocol_id: protocol_03
+  title: Add Pyridine to RBF
+  file: protocol_03_add_pyridine_to_rbf.yaml
+  status: planned
+  executable: false
+  asset_status: pending
+  action_status: ready
+- protocol_id: protocol_04
+  title: Measure pH
+  file: protocol_04_measure_ph.yaml
+  status: planned
+  executable: false
+  asset_status: ready
+  action_status: ready
+- protocol_id: protocol_05
+  title: Gently Shake Erlenmeyer
+  file: protocol_05_gently_shake_erlenmeyer.yaml
+  status: planned
+  executable: false
+  asset_status: ready
+  action_status: ready
+- protocol_id: protocol_06
+  title: Oven Drying Setup
+  file: protocol_06_oven_drying_setup.yaml
+  status: planned
+  executable: false
+  asset_status: ready
+  action_status: ready
+- protocol_id: protocol_07
+  title: Pour into Suction Flask
+  file: protocol_07_pour_into_suction_flask.yaml
+  status: planned
+  executable: false
+  asset_status: ready
+  action_status: ready
+- protocol_id: protocol_08
+  title: Shaker Mixing
+  file: protocol_08_shaker_mixing.yaml
+  status: planned
+  executable: false
+  asset_status: ready
+  action_status: ready
+- protocol_id: protocol_09
+  title: IR Spectral Scan
+  file: protocol_09_ir_spectral_scan.yaml
+  status: planned
+  executable: false
+  asset_status: ready
+  action_status: ready
+- protocol_id: protocol_10
+  title: Stir and Add Sulfuric Acid
+  file: protocol_10_stir_and_add_sulfuric_acid.yaml
+  status: planned
+  executable: false
+  asset_status: pending
+  action_status: ready
+- protocol_id: protocol_11
+  title: Add Methanol after Weighing
+  file: protocol_11_add_methanol_after_weighing.yaml
+  status: planned
+  executable: false
+  asset_status: pending
+  action_status: pending
+- protocol_id: protocol_12
+  title: Charge Salicylic Acid and Acetic Anhydride
+  file: protocol_12_charge_salicylic_acid_and_acetic_anhydride.yaml
+  status: planned
+  executable: false
+  asset_status: pending
+  action_status: pending
+- protocol_id: protocol_13
+  title: Carbonate Quench and pH Adjust
+  file: protocol_13_carbonate_quench_and_ph_adjust.yaml
+  status: planned
+  executable: false
+  asset_status: ready
+  action_status: ready
+- protocol_id: protocol_14
+  title: Heat and Shake Erlenmeyer
+  file: protocol_14_heat_and_shake_erlenmeyer.yaml
+  status: planned
+  executable: false
+  asset_status: ready
+  action_status: ready
+- protocol_id: protocol_15
+  title: Oven Dry Reaction Solution
+  file: protocol_15_oven_dry_reaction_solution.yaml
+  status: planned
+  executable: false
+  asset_status: pending
+  action_status: ready
+- protocol_id: protocol_16
+  title: Weigh and Transfer Benzoic Acid
+  file: protocol_16_weigh_and_transfer_benzoic_acid.yaml
+  status: planned
+  executable: false
+  asset_status: pending
+  action_status: pending
+- protocol_id: protocol_17
+  title: Bicarbonate Neutralization Shake
+  file: protocol_17_bicarbonate_neutralization_shake.yaml
+  status: planned
+  executable: false
+  asset_status: pending
+  action_status: ready
+- protocol_id: protocol_18
+  title: Esterification Charge Sequence
+  file: protocol_18_esterification_charge_sequence.yaml
+  status: planned
+  executable: false
+  asset_status: pending
+  action_status: pending
+- protocol_id: protocol_19
+  title: Heat, Shake, Transfer, Oven Dry
+  file: protocol_19_heat_shake_transfer_oven_dry.yaml
+  status: planned
+  executable: false
+  asset_status: ready
+  action_status: ready
+- protocol_id: protocol_20
+  title: Dissolve and Acid-Adjust Sodium Acetate
+  file: protocol_20_dissolve_and_acid_adjust_sodium_acetate.yaml
+  status: planned
+  executable: false
+  asset_status: pending
+  action_status: pending

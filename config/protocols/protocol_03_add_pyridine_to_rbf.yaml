@@ -1,0 +1,53 @@
+---
+schema_version: '1.0'
+protocol_id: protocol_03
+title: Add Pyridine to RBF
+status: planned
+executable: false
+source:
+  paper:
+    title: 'RoboChemGym: A Protocol-Driven Generative Simulation Framework for Long-Horizon
+      Chemical Manipulation'
+    arxiv: https://arxiv.org/abs/2610.02708
+    identifier: arXiv:2610.02708
+  description: Slowly pour pyridine (20 mL, 0.49 mol) from the narrow-mouth bottle
+    into a 100 mL round-bottom flask. Place the narrow-mouth bottle back in its original
+    position. Pick up the round-bottom flask and set it down.
+  atomic_action_sequence: Pick-Pour-Place
+assets:
+- id: RoundBottomFlask
+  display_name: Round Bottom Flask
+  role: target_container
+  registry_status: registered
+- id: NarrowMouthBottle
+  display_name: Narrow-Mouth Bottle (Liquid)
+  role: source_container
+  registry_status: pending_asset
+materials:
+- name: pyridine
+  amount: 20.0
+  unit: mL
+  amount_mol: 0.49
+  phase: liquid
+  source_asset: NarrowMouthBottle
+atomic_actions:
+- pick
+- pour
+- place
+registered_atomic_actions:
+- pick
+- pour
+- place
+generation:
+  mode: manifest_only
+  asset_status: pending
+  action_status: ready
+  pending_assets:
+  - NarrowMouthBottle
+  pending_capabilities: []
+  open_questions:
+  - A dedicated NarrowMouthBottle asset and placement anchors are still required.
+  notes:
+  - This file describes a protocol planned for future scene and trajectory generation.
+  - It is intentionally non-executable until all blocking assets, actions, anchors,
+    and semantics are resolved.

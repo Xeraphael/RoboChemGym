@@ -1,0 +1,82 @@
+---
+schema_version: '1.0'
+protocol_id: protocol_12
+title: Charge Salicylic Acid and Acetic Anhydride
+status: planned
+executable: false
+source:
+  paper:
+    title: 'RoboChemGym: A Protocol-Driven Generative Simulation Framework for Long-Horizon
+      Chemical Manipulation'
+    arxiv: https://arxiv.org/abs/2610.02708
+    identifier: arXiv:2610.02708
+  description: Use an electronic balance to weigh salicylic acid (2.0 g) from the
+    wide-mouth bottle. Slowly pour the salicylic acid into a 100 mL round-bottom flask.
+    Pour acetic anhydride (5.0 mL) into the flask. Place the containers back after
+    use.
+  atomic_action_sequence: Pick-Pick-Press-Pick-Shake-Pour-Place
+assets:
+- id: ElectronicScale
+  display_name: Electronic Scale
+  role: target_device
+  registry_status: registered
+- id: RoundBottomFlask
+  display_name: Round Bottom Flask
+  role: target_container
+  registry_status: registered
+- id: ErlenmeyerFlask
+  display_name: Erlenmeyer Flask
+  role: listed_source_container
+  registry_status: registered
+- id: WideMouthBottle
+  display_name: Wide-Mouth Bottle (Solid)
+  role: source_container
+  registry_status: pending_asset
+- id: NarrowMouthBottle
+  display_name: Narrow-Mouth Bottle (Liquid)
+  role: source_container
+  registry_status: pending_asset
+materials:
+- name: salicylic acid
+  amount: 2.0
+  unit: g
+  phase: solid
+  source_asset: WideMouthBottle
+- name: acetic anhydride
+  amount: 5.0
+  unit: mL
+  phase: liquid
+  source_asset: NarrowMouthBottle
+atomic_actions:
+- pick
+- pick
+- press
+- pick
+- shake
+- pour
+- place
+registered_atomic_actions:
+- pick
+- press
+- shake
+- pour
+- place
+generation:
+  mode: manifest_only
+  asset_status: pending
+  action_status: pending
+  pending_assets:
+  - WideMouthBottle
+  - NarrowMouthBottle
+  pending_capabilities:
+  - weigh
+  open_questions:
+  - The Assets Used line lists an Erlenmeyer Flask but the text does not identify
+    which liquid source container it represents.
+  - The supplied sequence includes Shake although the problem statement only specifies
+    weighing and pouring.
+  - Dedicated NarrowMouthBottle and WideMouthBottle assets are still required.
+  notes:
+  - This file describes a protocol planned for future scene and trajectory generation.
+  - It is intentionally non-executable until all blocking assets, actions, anchors,
+    and semantics are resolved.
