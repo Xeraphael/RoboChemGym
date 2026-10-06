@@ -12,7 +12,7 @@
   </a>
 </p>
 
-**论文：** [RoboChemGym：面向长程化学操作的协议驱动生成式仿真框架](https://arxiv.org/abs/2610.02708) · [arXiv:2610.02708](https://arxiv.org/abs/2610.02708)
+**论文：** [RoboChemGym：面向长程化学操作的协议驱动生成式仿真框架](https://arxiv.org/abs/2610.02708)
 
 RoboChemGym 将自然语言化学实验协议转换为可执行的机器人轨迹，通过面向
 实验室场景的随机化扩展轨迹数据，并提供 Isaac Sim 中的策略部署与评测
