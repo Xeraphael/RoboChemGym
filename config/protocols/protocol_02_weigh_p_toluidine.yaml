@@ -2,8 +2,6 @@
 schema_version: '1.0'
 protocol_id: protocol_02
 title: Weigh p-Toluidine
-status: planned
-executable: false
 source:
   paper:
     title: 'RoboChemGym: A Protocol-Driven Generative Simulation Framework for Long-Horizon
@@ -18,11 +16,9 @@ assets:
 - id: ElectronicScale
   display_name: Electronic Scale
   role: target_device
-  registry_status: registered
 - id: WideMouthBottle
   display_name: Wide-Mouth Bottle (Solid)
   role: source_container
-  registry_status: pending_asset
 materials:
 - name: p-toluidine
   amount: 5.0
@@ -34,22 +30,3 @@ atomic_actions:
 - pick
 - place
 - press
-registered_atomic_actions:
-- pick
-- place
-- press
-generation:
-  mode: manifest_only
-  asset_status: pending
-  action_status: pending
-  pending_assets:
-  - WideMouthBottle
-  pending_capabilities:
-  - weigh
-  open_questions:
-  - The registry has no weigh action or weighing-container transfer primitive.
-  - A dedicated WideMouthBottle asset and placement anchors are still required.
-  notes:
-  - This file describes a protocol planned for future scene and trajectory generation.
-  - It is intentionally non-executable until all blocking assets, actions, anchors,
-    and semantics are resolved.

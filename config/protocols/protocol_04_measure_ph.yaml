@@ -2,8 +2,6 @@
 schema_version: '1.0'
 protocol_id: protocol_04
 title: Measure pH
-status: planned
-executable: false
 source:
   paper:
     title: 'RoboChemGym: A Protocol-Driven Generative Simulation Framework for Long-Horizon
@@ -17,11 +15,9 @@ assets:
 - id: Beaker
   display_name: Beaker
   role: source_container
-  registry_status: registered
 - id: pHMeter
   display_name: pH Meter
   role: target_device
-  registry_status: registered
 materials:
 - name: reaction solution
   phase: liquid
@@ -29,18 +25,3 @@ atomic_actions:
 - pick
 - place
 - press
-registered_atomic_actions:
-- pick
-- place
-- press
-generation:
-  mode: manifest_only
-  asset_status: ready
-  action_status: ready
-  pending_assets: []
-  pending_capabilities: []
-  open_questions: []
-  notes:
-  - This file describes a protocol planned for future scene and trajectory generation.
-  - It is intentionally non-executable until all blocking assets, actions, anchors,
-    and semantics are resolved.

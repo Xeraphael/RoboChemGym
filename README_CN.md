@@ -122,10 +122,9 @@ python agent/main.py --resume outputs/action_agent/<run-id>
 仓库在 [`protocols/example_protocol/`](protocols/example_protocol/) 中提供了
 该示例对应的可复用 Plan、校验产物、配置和场景。
 
-论文中的 20 个 Protocol 已整理为待生成配置，位于
-[`config/protocols/`](config/protocols/)。这些 YAML 会保留原始描述、物料、
-资产、原子动作序列和待解决问题，并明确标记当前尚未可执行的部分。详见
-[Protocol 配置索引](config/protocols/README.md)。
+论文中的 20 个 Protocol 配置位于
+[`config/protocols/`](config/protocols/)。每个 YAML 文件包含原始描述、物料、
+资产和原子动作序列。
 
 ### 2. 采集随机化 Episode
 

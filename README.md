@@ -131,11 +131,9 @@ The repository includes the corresponding reusable Plan, validation artifacts,
 configuration, and scene under
 [`protocols/example_protocol/`](protocols/example_protocol/).
 
-The 20 protocols described in the paper are tracked as generation-ready
-manifests under [`config/protocols/`](config/protocols/). These YAML files keep
-the source descriptions, materials, assets, atomic action sequences, and open
-questions while the missing assets and capabilities are being prepared. See the
-[protocol manifest index](config/protocols/README.md) for the readiness status.
+The 20 protocols described in the paper are provided as YAML configurations
+under [`config/protocols/`](config/protocols/). Each file includes the source
+description, materials, assets, and atomic action sequence.
 
 ### 2. Collect randomized episodes
 

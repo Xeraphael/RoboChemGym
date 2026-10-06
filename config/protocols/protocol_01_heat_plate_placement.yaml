@@ -2,8 +2,6 @@
 schema_version: '1.0'
 protocol_id: protocol_01
 title: Heat Plate Placement
-status: planned
-executable: false
 source:
   paper:
     title: 'RoboChemGym: A Protocol-Driven Generative Simulation Framework for Long-Horizon
@@ -18,11 +16,9 @@ assets:
 - id: HeatingPlate
   display_name: Heating Plate
   role: target_device
-  registry_status: registered
 - id: NarrowMouthBottle
   display_name: Narrow-Mouth Bottle (Liquid)
   role: source_container
-  registry_status: pending_asset
 materials:
 - name: dichloromethane
   amount: 5.0
@@ -34,20 +30,3 @@ atomic_actions:
 - pick
 - place
 - press
-registered_atomic_actions:
-- pick
-- place
-- press
-generation:
-  mode: manifest_only
-  asset_status: pending
-  action_status: ready
-  pending_assets:
-  - NarrowMouthBottle
-  pending_capabilities: []
-  open_questions:
-  - A dedicated NarrowMouthBottle asset and placement anchors are still required.
-  notes:
-  - This file describes a protocol planned for future scene and trajectory generation.
-  - It is intentionally non-executable until all blocking assets, actions, anchors,
-    and semantics are resolved.

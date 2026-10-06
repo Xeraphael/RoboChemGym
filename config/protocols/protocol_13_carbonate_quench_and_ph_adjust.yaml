@@ -2,8 +2,6 @@
 schema_version: '1.0'
 protocol_id: protocol_13
 title: Carbonate Quench and pH Adjust
-status: planned
-executable: false
 source:
   paper:
     title: 'RoboChemGym: A Protocol-Driven Generative Simulation Framework for Long-Horizon
@@ -19,11 +17,9 @@ assets:
 - id: Beaker
   display_name: Beaker
   role: source_and_target_container
-  registry_status: registered
 - id: pHMeter
   display_name: pH Meter
   role: target_device
-  registry_status: registered
 materials:
 - name: reaction solution
   amount: 0.5
@@ -43,21 +39,3 @@ atomic_actions:
 - shake
 - place
 - press
-registered_atomic_actions:
-- pick
-- place
-- press
-- shake
-generation:
-  mode: manifest_only
-  asset_status: ready
-  action_status: ready
-  pending_assets: []
-  pending_capabilities: []
-  open_questions:
-  - Closed-loop pH adjustment requires an observable pH reading and a control policy;
-    the current registry only provides placement, pressing, and shaking.
-  notes:
-  - This file describes a protocol planned for future scene and trajectory generation.
-  - It is intentionally non-executable until all blocking assets, actions, anchors,
-    and semantics are resolved.

@@ -2,8 +2,6 @@
 schema_version: '1.0'
 protocol_id: protocol_15
 title: Oven Dry Reaction Solution
-status: planned
-executable: false
 source:
   paper:
     title: 'RoboChemGym: A Protocol-Driven Generative Simulation Framework for Long-Horizon
@@ -17,15 +15,12 @@ assets:
 - id: Beaker
   display_name: Beaker
   role: target_container
-  registry_status: registered
 - id: DryingBox
   display_name: Drying Box
   role: target_device
-  registry_status: registered
 - id: NarrowMouthBottle
   display_name: Narrow-Mouth Bottle (Liquid)
   role: listed_source_container
-  registry_status: pending_asset
 materials:
 - name: reaction solution
   amount: 20.0
@@ -41,26 +36,3 @@ atomic_actions:
 - open
 - pick
 - place
-registered_atomic_actions:
-- pick
-- pour
-- place
-- press
-- open
-generation:
-  mode: manifest_only
-  asset_status: pending
-  action_status: ready
-  pending_assets:
-  - NarrowMouthBottle
-  pending_capabilities: []
-  open_questions:
-  - The text does not identify the source vessel for the reaction solution; the Assets
-    Used line suggests a Narrow-Mouth Bottle.
-  - The supplied sequence omits an explicit Close action even though the problem requires
-    closing the oven door.
-  - A dedicated NarrowMouthBottle asset is still required.
-  notes:
-  - This file describes a protocol planned for future scene and trajectory generation.
-  - It is intentionally non-executable until all blocking assets, actions, anchors,
-    and semantics are resolved.

@@ -2,8 +2,6 @@
 schema_version: '1.0'
 protocol_id: protocol_19
 title: Heat, Shake, Transfer, Oven Dry
-status: planned
-executable: false
 source:
   paper:
     title: 'RoboChemGym: A Protocol-Driven Generative Simulation Framework for Long-Horizon
@@ -19,19 +17,15 @@ assets:
 - id: ErlenmeyerFlask
   display_name: Erlenmeyer Flask
   role: source_container
-  registry_status: registered
 - id: HeatingPlate
   display_name: Heating Plate
   role: target_device
-  registry_status: registered
 - id: Beaker
   display_name: Beaker
   role: target_container
-  registry_status: registered
 - id: DryingBox
   display_name: Drying Box
   role: target_device
-  registry_status: registered
 materials:
 - name: reaction solution
   amount: 20.0
@@ -51,24 +45,3 @@ atomic_actions:
 - place
 - pick
 - place
-registered_atomic_actions:
-- pick
-- place
-- shake
-- press
-- pour
-generation:
-  mode: manifest_only
-  asset_status: ready
-  action_status: ready
-  pending_assets: []
-  pending_capabilities: []
-  open_questions:
-  - The supplied sequence places Press after Shake, while the prose presses the heating
-    plate before shaking.
-  - The prose requires closing the oven door, but the supplied sequence ends after
-    placing the beaker and omits Close.
-  notes:
-  - This file describes a protocol planned for future scene and trajectory generation.
-  - It is intentionally non-executable until all blocking assets, actions, anchors,
-    and semantics are resolved.

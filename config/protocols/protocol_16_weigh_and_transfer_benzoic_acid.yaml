@@ -2,8 +2,6 @@
 schema_version: '1.0'
 protocol_id: protocol_16
 title: Weigh and Transfer Benzoic Acid
-status: planned
-executable: false
 source:
   paper:
     title: 'RoboChemGym: A Protocol-Driven Generative Simulation Framework for Long-Horizon
@@ -18,19 +16,15 @@ assets:
 - id: Beaker
   display_name: Beaker
   role: source_container
-  registry_status: registered
 - id: ElectronicScale
   display_name: Electronic Scale
   role: target_device
-  registry_status: registered
 - id: RoundBottomFlask
   display_name: Round Bottom Flask
   role: target_container
-  registry_status: registered
 - id: WideMouthBottle
   display_name: Wide-Mouth Bottle (Solid)
   role: listed_source_container
-  registry_status: pending_asset
 materials:
 - name: benzoic acid
   phase: solid
@@ -43,27 +37,3 @@ atomic_actions:
 - shake
 - pour
 - place
-registered_atomic_actions:
-- pick
-- place
-- press
-- shake
-- pour
-generation:
-  mode: manifest_only
-  asset_status: pending
-  action_status: pending
-  pending_assets:
-  - WideMouthBottle
-  pending_capabilities:
-  - weigh
-  open_questions:
-  - The text starts with a beaker already containing benzoic acid, while the Assets
-    Used line also lists a Wide-Mouth Bottle.
-  - The supplied sequence includes Shake although the problem statement does not specify
-    shaking.
-  - A dedicated WideMouthBottle asset and placement anchors are still required.
-  notes:
-  - This file describes a protocol planned for future scene and trajectory generation.
-  - It is intentionally non-executable until all blocking assets, actions, anchors,
-    and semantics are resolved.

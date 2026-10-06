@@ -2,8 +2,6 @@
 schema_version: '1.0'
 protocol_id: protocol_12
 title: Charge Salicylic Acid and Acetic Anhydride
-status: planned
-executable: false
 source:
   paper:
     title: 'RoboChemGym: A Protocol-Driven Generative Simulation Framework for Long-Horizon
@@ -19,23 +17,18 @@ assets:
 - id: ElectronicScale
   display_name: Electronic Scale
   role: target_device
-  registry_status: registered
 - id: RoundBottomFlask
   display_name: Round Bottom Flask
   role: target_container
-  registry_status: registered
 - id: ErlenmeyerFlask
   display_name: Erlenmeyer Flask
   role: listed_source_container
-  registry_status: registered
 - id: WideMouthBottle
   display_name: Wide-Mouth Bottle (Solid)
   role: source_container
-  registry_status: pending_asset
 - id: NarrowMouthBottle
   display_name: Narrow-Mouth Bottle (Liquid)
   role: source_container
-  registry_status: pending_asset
 materials:
 - name: salicylic acid
   amount: 2.0
@@ -55,28 +48,3 @@ atomic_actions:
 - shake
 - pour
 - place
-registered_atomic_actions:
-- pick
-- press
-- shake
-- pour
-- place
-generation:
-  mode: manifest_only
-  asset_status: pending
-  action_status: pending
-  pending_assets:
-  - WideMouthBottle
-  - NarrowMouthBottle
-  pending_capabilities:
-  - weigh
-  open_questions:
-  - The Assets Used line lists an Erlenmeyer Flask but the text does not identify
-    which liquid source container it represents.
-  - The supplied sequence includes Shake although the problem statement only specifies
-    weighing and pouring.
-  - Dedicated NarrowMouthBottle and WideMouthBottle assets are still required.
-  notes:
-  - This file describes a protocol planned for future scene and trajectory generation.
-  - It is intentionally non-executable until all blocking assets, actions, anchors,
-    and semantics are resolved.

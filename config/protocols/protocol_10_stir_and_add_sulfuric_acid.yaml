@@ -2,8 +2,6 @@
 schema_version: '1.0'
 protocol_id: protocol_10
 title: Stir and Add Sulfuric Acid
-status: planned
-executable: false
 source:
   paper:
     title: 'RoboChemGym: A Protocol-Driven Generative Simulation Framework for Long-Horizon
@@ -20,15 +18,12 @@ assets:
 - id: ErlenmeyerFlask
   display_name: Erlenmeyer Flask
   role: source_container
-  registry_status: registered
 - id: HeatingPlate
   display_name: Heating Plate
   role: target_device
-  registry_status: registered
 - id: NarrowMouthBottle
   display_name: Narrow-Mouth Bottle (Liquid)
   role: listed_source_container
-  registry_status: pending_asset
 materials:
 - name: benzoic acid
   amount: 5.0
@@ -49,25 +44,3 @@ atomic_actions:
 - pour
 - place
 - press
-registered_atomic_actions:
-- pick
-- place
-- press
-- pour
-generation:
-  mode: manifest_only
-  asset_status: pending
-  action_status: ready
-  pending_assets:
-  - WideMouthBottle
-  pending_capabilities: []
-  open_questions:
-  - The problem names a Wide-Mouth Bottle for benzoic acid, but the Assets Used line
-    lists a Narrow-Mouth Bottle and an Erlenmeyer Flask; resolve the source-vessel
-    mapping.
-  - The registry has no explicit stir action; generation must document how stirring
-    is approximated by the available actions.
-  notes:
-  - This file describes a protocol planned for future scene and trajectory generation.
-  - It is intentionally non-executable until all blocking assets, actions, anchors,
-    and semantics are resolved.

@@ -2,8 +2,6 @@
 schema_version: '1.0'
 protocol_id: protocol_20
 title: Dissolve and Acid-Adjust Sodium Acetate
-status: planned
-executable: false
 source:
   paper:
     title: 'RoboChemGym: A Protocol-Driven Generative Simulation Framework for Long-Horizon
@@ -23,23 +21,18 @@ assets:
 - id: ElectronicScale
   display_name: Electronic Scale
   role: target_device
-  registry_status: registered
 - id: ErlenmeyerFlask
   display_name: Erlenmeyer Flask
   role: reaction_container
-  registry_status: registered
 - id: HeatingPlate
   display_name: Heating Plate
   role: target_device
-  registry_status: registered
 - id: WideMouthBottle
   display_name: Wide-Mouth Bottle (Solid)
   role: source_container
-  registry_status: pending_asset
 - id: NarrowMouthBottle
   display_name: Narrow-Mouth Bottle (Liquid)
   role: source_container
-  registry_status: pending_asset
 materials:
 - name: sodium acetate
   amount: 4.1
@@ -71,28 +64,3 @@ atomic_actions:
 - pour
 - place
 - press
-registered_atomic_actions:
-- pick
-- place
-- press
-- shake
-- pour
-generation:
-  mode: manifest_only
-  asset_status: pending
-  action_status: pending
-  pending_assets:
-  - WideMouthBottle
-  - NarrowMouthBottle
-  pending_capabilities:
-  - weigh
-  open_questions:
-  - The Assets Used line provides one Narrow-Mouth Bottle for both ethanol and hydrochloric
-    acid; confirm whether two source containers or staged refills are intended.
-  - The registry has no explicit magnetic-stirrer, dissolution-observation, constant-temperature,
-    or timed-stirring primitives; define the intended approximation.
-  - Dedicated NarrowMouthBottle and WideMouthBottle assets are still required.
-  notes:
-  - This file describes a protocol planned for future scene and trajectory generation.
-  - It is intentionally non-executable until all blocking assets, actions, anchors,
-    and semantics are resolved.
