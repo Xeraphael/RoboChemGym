@@ -13,7 +13,7 @@ Manipulation**
   </a>
 </p>
 
-**Paper:** [RoboChemGym: A Protocol-Driven Generative Simulation Framework for Long-Horizon Chemical Manipulation](https://arxiv.org/abs/2610.02708) · [arXiv:2610.02708](https://arxiv.org/abs/2610.02708)
+**Paper:** [RoboChemGym: A Protocol-Driven Generative Simulation Framework for Long-Horizon Chemical Manipulation](https://arxiv.org/abs/2610.02708)
 
 RoboChemGym turns natural-language chemistry protocols into executable robot
 trajectories, scales those trajectories through lab-specific randomization, and
